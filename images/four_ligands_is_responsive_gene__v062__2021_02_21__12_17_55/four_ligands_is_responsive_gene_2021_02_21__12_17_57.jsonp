@@ -1,0 +1,16 @@
+var sets = [
+         {"sets": ['6HR_BMP4'], "size": 298},
+         {"sets": ['6HR_BMP10'], "size": 427},
+         {"sets": ['6HR_BMP4', '6HR_BMP10'], "size": 223},
+         {"sets": ['6HR_GDF5'], "size": 214},
+         {"sets": ['6HR_BMP4', '6HR_GDF5'], "size": 87},
+         {"sets": ['6HR_BMP10', '6HR_GDF5'], "size": 150},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_GDF5'], "size": 72},
+         {"sets": ['6HR_BMP9'], "size": 301},
+         {"sets": ['6HR_BMP4', '6HR_BMP9'], "size": 252},
+         {"sets": ['6HR_BMP10', '6HR_BMP9'], "size": 238},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_BMP9'], "size": 195},
+         {"sets": ['6HR_GDF5', '6HR_BMP9'], "size": 96},
+         {"sets": ['6HR_BMP4', '6HR_GDF5', '6HR_BMP9'], "size": 75},
+         {"sets": ['6HR_BMP10', '6HR_GDF5', '6HR_BMP9'], "size": 80},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_GDF5', '6HR_BMP9'], "size": 64}];

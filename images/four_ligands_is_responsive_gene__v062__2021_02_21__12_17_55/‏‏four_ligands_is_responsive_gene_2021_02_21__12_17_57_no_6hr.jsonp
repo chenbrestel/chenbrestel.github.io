@@ -1,0 +1,16 @@
+var sets = [
+         {"sets": ['BMP4'], "size": 298},
+         {"sets": ['BMP10'], "size": 427},
+         {"sets": ['BMP4', 'BMP10'], "size": 223},
+         {"sets": ['GDF5'], "size": 214},
+         {"sets": ['BMP4', 'GDF5'], "size": 87},
+         {"sets": ['BMP10', 'GDF5'], "size": 150},
+         {"sets": ['BMP4', 'BMP10', 'GDF5'], "size": 72},
+         {"sets": ['BMP9'], "size": 301},
+         {"sets": ['BMP4', 'BMP9'], "size": 252},
+         {"sets": ['BMP10', 'BMP9'], "size": 238},
+         {"sets": ['BMP4', 'BMP10', 'BMP9'], "size": 195},
+         {"sets": ['GDF5', 'BMP9'], "size": 96},
+         {"sets": ['BMP4', 'GDF5', 'BMP9'], "size": 75},
+         {"sets": ['BMP10', 'GDF5', 'BMP9'], "size": 80},
+         {"sets": ['BMP4', 'BMP10', 'GDF5', 'BMP9'], "size": 64}];

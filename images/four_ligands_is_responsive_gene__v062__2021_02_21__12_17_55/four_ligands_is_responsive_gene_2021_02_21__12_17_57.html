@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Simple venn.js example</title>
+<style>
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+    <h1>6-HR</h1>
+    <div id="venn"></div>
+</body>
+
+<script src="../d3.v4.min.js"></script>
+<script src="../venn.js"></script>
+<script src="‏‏four_ligands_is_responsive_gene_2021_02_21__12_17_57_no_6hr.jsonp"></script>
+<script>
+// define sets and set set intersections
+<!--var sets = [ {sets: ['A'], size: 6},-->
+<!--             {sets: ['B'], size: 12},-->
+<!--             {sets: ['A','B'], size: 2}];-->
+
+
+var chart = venn.VennDiagram();
+<!--d3.select("#venn").datum(sets).call(chart);-->
+
+var div = d3.select("#venn")
+div.datum(sets).call(chart);
+
+var tooltip = d3.select("body").append("div")
+    .attr("class", "venntooltip");
+
+div.selectAll("path")
+    .style("stroke-opacity", 0)
+    .style("stroke", "#fff")
+    .style("stroke-width", 3)
+
+div.selectAll("g")
+    .on("mouseover", function(d, i) {
+        // sort all the areas relative to the current item
+        venn.sortAreas(div, d);
+
+        // Display a tooltip with the current size
+        tooltip.transition().duration(400).style("opacity", .9);
+        tooltip.text(d.sets + ": " + d.size + " genes");
+
+        // highlight the current path
+        var selection = d3.select(this).transition("tooltip").duration(400);
+        selection.select("path")
+            .style("fill-opacity", d.sets.length == 1 ? .4 : .1)
+            .style("stroke-opacity", 1);
+    })
+
+    .on("mousemove", function() {
+        tooltip.style("left", (d3.event.pageX) + "px")
+               .style("top", (d3.event.pageY - 28) + "px");
+    })
+
+    .on("mouseout", function(d, i) {
+        tooltip.transition().duration(400).style("opacity", 0);
+        var selection = d3.select(this).transition("tooltip").duration(400);
+        selection.select("path")
+            .style("fill-opacity", d.sets.length == 1 ? .25 : .0)
+            .style("stroke-opacity", 0);
+    });
+
+
+</script>
+</html>

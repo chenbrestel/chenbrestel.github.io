@@ -1,0 +1,18 @@
+2021-02-21 12:17:55,071 - log file: /data/chen/logs/5781_12/tmp/four_ligands_is_responsive_gene__v062__2021_02_21__12_17_55/four_ligands_is_responsive_gene__v062__2021_02_21__12_17_55_log.txt
+2021-02-21 12:17:57,403 - var sets = [
+         {"sets": ['6HR_BMP4'], "size": 298},
+         {"sets": ['6HR_BMP10'], "size": 427},
+         {"sets": ['6HR_BMP4', '6HR_BMP10'], "size": 223},
+         {"sets": ['6HR_GDF5'], "size": 214},
+         {"sets": ['6HR_BMP4', '6HR_GDF5'], "size": 87},
+         {"sets": ['6HR_BMP10', '6HR_GDF5'], "size": 150},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_GDF5'], "size": 72},
+         {"sets": ['6HR_BMP9'], "size": 301},
+         {"sets": ['6HR_BMP4', '6HR_BMP9'], "size": 252},
+         {"sets": ['6HR_BMP10', '6HR_BMP9'], "size": 238},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_BMP9'], "size": 195},
+         {"sets": ['6HR_GDF5', '6HR_BMP9'], "size": 96},
+         {"sets": ['6HR_BMP4', '6HR_GDF5', '6HR_BMP9'], "size": 75},
+         {"sets": ['6HR_BMP10', '6HR_GDF5', '6HR_BMP9'], "size": 80},
+         {"sets": ['6HR_BMP4', '6HR_BMP10', '6HR_GDF5', '6HR_BMP9'], "size": 64}];
+2021-02-21 12:17:57,421 - writing /data/chen/logs/5781_12/tmp/four_ligands_is_responsive_gene__v062__2021_02_21__12_17_55/four_ligands_is_responsive_gene_2021_02_21__12_17_57.jsonp
