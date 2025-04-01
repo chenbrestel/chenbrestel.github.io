@@ -294,6 +294,22 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
           opacity: 0.5; /* Optional: Make the placeholder image look subdued */
         }
 
+            .share-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .share-button:hover {
+      background-color: #3367d6;
+    }
+
 
     </style>
 
@@ -314,10 +330,24 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
     <!-- Profile Section -->
 
     <header>
-        <div>
+        <div class="header">
             <p align="left">Bs"d</p>
             <h1>🧬 Protein Engineering & Language</h1>
-            <p align="center">Exploring the science of protein design and engineering and deciphering their language</p>
+            <div style="width: 80%;   margin: 0 auto;">
+                <p style="text-align: justify; ">Exploring the science of protein design and
+                    engineering and deciphering their language</p>
+                <!--            <br>-->
+                <!--            <p>-->
+                <div style="text-align: center; ">
+                    <button class="share-button" onclick="shareContent(this)" style="border: 2px solid navy;">Share this
+                        page
+                    </button>
+                    <br>
+                    <br>
+                </div>
+                <!--            </p>-->
+            </div>
+
         </div>
     </header>
 
@@ -358,7 +388,7 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
         <div class="section-heading">Publications & Code</div>
 
         <!-- Publication context_dependent_zimmerman_pnas_2024_paper -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="context_dependent_zimmerman_pnas_2024_paper">
             <div class="publication-media">
                 <img src="images/context_dependent_zimmerman_pnas_2024_paper_logo.png" class="one" alt="Before Image"/>
                 <img src="images/context_dependent_zimmerman_pnas_2024_paper_logo.png" class="two" alt="Before Image"/>
@@ -392,7 +422,7 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
         </div>
 
         <!-- Publication solvit_github-->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="solvit_github">
             <div class="publication-media">
                 <img src="images/solvit_github_logo.png" class="one" alt="Before Image"/>
                 <img src="images/solvit_github_logo.png" class="two" alt="Before Image"/>
@@ -400,9 +430,9 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
             <div class="publication-details">
 
                 <p>
-                    <a href="https://github.com/Enzymit/SolvIT" target="_blank"><strong>SolvIT - Protein Solubility
+                    <a href="https://github.com/Enzymit/SolvIT" target="_blank"><strong>SolvIT GitHub - Protein Solubility
                         Prediction Deep
-                        Neural Network</strong></a><br>
+                        Neural Network </strong></a><br>
                     <strong>Chen Brestel</strong>,
                     Lior Zimmerman
                     <br>
@@ -425,22 +455,22 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
         </div>
 
         <!-- Publication context_dependent_design_brestel_5785_meds_slides -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="context_dependent_design_brestel_5785_meds">
             <div class="publication-media">
 
                 <p>
                     <iframe src="https://www.youtube.com/embed/9d6JH2yM1xE?si=0bDv79aaTibdCMh4"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen ></iframe>
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     <!--                    <iframe src="https://www.youtube.com/embed/9d6JH2yM1xE?si=0bDv79aaTibdCMh4"-->
                     <!--                            title="YouTube video player" frameborder="0"-->
                     <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
                     <!--                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="two"></iframe>-->
                 </p>
                 <p>
-                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf" ></iframe>
-<!--                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf" class="two"></iframe>-->
+                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf"></iframe>
+                    <!--                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf" class="two"></iframe>-->
 
                 </p>
             </div>
@@ -477,7 +507,7 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
 
 
         <!-- Publication context_dependent_design_brestel_5785_isranalytica_slides -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="context_dependent_design_brestel_5785_isranalytica">
             <div class="publication-media">
                 <iframe src="images/context_dependent_design_brestel_5785_isranalytica_slides.pdf" class="one"></iframe>
                 <iframe src="images/context_dependent_design_brestel_5785_isranalytica_slides.pdf" class="two"></iframe>
@@ -509,7 +539,7 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
 
 
         <!-- Publication computer_make_me_a_sheep_brestel_2023_big_science_in_small -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="computer_make_me_a_sheep_brestel_2023_big_science_in_small">
             <div class="publication-media">
                 <img src="images/computer_make_me_a_sheep_brestel_2023_big_science_in_small.png" class="one"
                      alt="Before Image"/>
@@ -546,9 +576,46 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
     <section class="section">
         <div class="section-heading">Research Resources</div>
 
+        <!--         Google DeepMind TxGemma Blog -->
+        <div class="publication highlighted" id="tx_gemma_5785_blog">
+            <div class="publication-media">
+                <img src="images/tx_gemma_5785_blog_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/tx_gemma_5785_blog_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://developers.googleblog.com/en/introducing-txgemma-open-models-improving-therapeutics-development/"
+                       target="_blank"><strong>Introducing TxGemma: Open models to improve therapeutics development
+
+                    </strong></a><br>
+                    Shekoofeh Azizi
+                    <br>
+                    <strong>Google DeepMind</strong>
+                    <br>
+                    <em>Blog</em> , 5785 2025<br>
+                </p>
+                <p>
+                    TxGemma is a collection of open models designed to improve the efficiency of therapeutic development
+                    by leveraging the power of large language models.
+
+                    Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art open models, TxGemma
+                    is specifically trained to understand and predict the properties of therapeutic entities throughout
+                    the entire discovery process, from identifying promising targets to helping predict clinical trial
+                    outcomes. This can potentially shorten the time from lab to bedside, and reduce the costs associated
+                    with traditional methods.
+                </p>
+                <p>#drug_discovery #protein_language #protein_engineering #blog #5784 #2024</p>
+                <!--                    <button class="share-button" onclick="shareContent(this)">Share</button>-->
+
+            </div>
+        </div>
+
 
         <!--         Google DeepMind AlphaFold 3 Podcast -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="alphafold3_5785_blog">
             <div class="publication-media">
                 <img src="images/alphafold3_5785_blog_logo.png" class="one"
                      alt="Before Image"/>
@@ -576,40 +643,9 @@ https://chenbrestel.github.io/science/protein_engineering/protein_engineering.ht
         </div>
 
 
-        <!--         Google DeepMind TxGemma Blog -->
-        <div class="publication highlighted">
-            <div class="publication-media">
-                <img src="images/tx_gemma_5785_blog_logo.png" class="one"
-                     alt="Before Image"/>
-                <img src="images/tx_gemma_5785_blog_logo.png" class="two"
-                     alt="Before Image"/>
-            </div>
-            <div class="publication-details">
-
-                <p>
-                    <a href="https://developers.googleblog.com/en/introducing-txgemma-open-models-improving-therapeutics-development/"
-                       target="_blank"><strong>Introducing TxGemma: Open models to improve therapeutics development
-
-                    </strong></a><br>
-                    Shekoofeh Azizi
-                    <br>
-                    <strong>Google DeepMind</strong>
-                    <br>
-                    <em>Blog</em> , 5785 2025<br>
-                </p>
-                <p>
-                    TxGemma is a collection of open models designed to improve the efficiency of therapeutic development by leveraging the power of large language models.
-
-Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art open models, TxGemma is specifically trained to understand and predict the properties of therapeutic entities throughout the entire discovery process, from identifying promising targets to helping predict clinical trial outcomes. This can potentially shorten the time from lab to bedside, and reduce the costs associated with traditional methods.
-                </p>
-                <p>#drug_discovery #protein_language #protein_engineering #blog #5784 #2024</p>
-            </div>
-        </div>
-
-
         <!--         Facebook ESM 3 Blog -->
 
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="esm3_5785_blog">
             <div class="publication-media">
                 <img src="images/esm3_5785_blog_logo.png" class="one"
                      alt="Before Image"/>
@@ -636,7 +672,7 @@ Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art o
 
         <!--         Google DeepMind AlphaFold 2 Podcast -->
 
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="alhpafold2_5782_podcast">
             <div class="publication-media">
                 <!--                width="560" height="315"-->
                 <iframe src="https://www.youtube.com/embed/ZfJhOTZi0WE?si=ED1zc_9  dAfHpLJRv"
@@ -667,7 +703,7 @@ Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art o
 
 
         <!--         Google DeepMind AlphaFold 2 Blog -->
-        <div class="publication highlighted">
+        <div class="publication highlighted" id="alhpafold2_5781_blog">
             <div class="publication-media">
                 <img src="images/alhpafold2_5781_blog_logo.png" class="one"
                      alt="Before Image"/>
@@ -742,6 +778,126 @@ Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art o
 
 
 </script>
+
+<script>
+
+    // Function to add share buttons to all content sections
+function addShareButtons() {
+ const contentSections = document.querySelectorAll('.publication-details');
+
+ contentSections.forEach(section => {
+   // Create a share button
+   const shareButton = document.createElement('button');
+   shareButton.className = 'share-button';
+   shareButton.textContent = 'Share';
+
+   // Customize button text based on section ID
+   const sectionId = section.id;
+   if (sectionId.startsWith('article')) {
+     shareButton.textContent = 'Share This Article';
+   } else if (sectionId.startsWith('tutorial')) {
+     shareButton.textContent = 'Share This Tutorial';
+   }
+
+   // Add click event
+   shareButton.addEventListener('click', function() {
+     shareContent(this);
+   });
+
+   // Append the button to the section
+   section.appendChild(shareButton);
+ });
+}
+
+function convertToSingleLine(input) {
+  return input.replace(/\s+/g, ' ').trim();
+}
+
+function shareContent(button) {
+ // Get the grand-parent div (content section)
+ let contentSection;
+  contentSection = button.closest('.publication');
+
+  let contentId, contentTitle;
+ if (contentSection) {
+ // Get the ID of the content section
+  contentId = contentSection.id;
+
+ // Get the title from the h2 element within the content section
+  contentTitle = contentSection.querySelector('a').textContent;
+ } else {
+     contentSection = button.closest('.header');
+ contentId = "";
+ contentTitle =  contentSection.querySelector('h1').textContent;
+
+ }
+
+contentTitle = convertToSingleLine(contentTitle)
+
+ // Create a custom URL with the content ID as a parameter
+ const shareUrl = window.location.origin + window.location.pathname + '#' + contentId;
+
+ // Prepare custom share text based on the content ID
+ let shareText;
+
+ if (contentId.startsWith('article')) {
+   shareText = 'Check out this article: ' + contentTitle;
+ } else if (contentId.startsWith('tutorial')) {
+   shareText = 'I found this helpful tutorial: ' + contentTitle;
+ } else {
+   shareText = 'Check this out: ' + contentTitle;
+ }
+
+ // Try to use the Web Share API
+ if (navigator.share) {
+   navigator.share({
+     title: contentTitle,
+     text: shareText,
+     url: shareUrl
+   })
+   .then(() => console.log('Share successful'))
+   .catch((error) => console.log('Error sharing:', error));
+ } else {
+   // Fallback for browsers that don't support the Web Share API
+   // Create custom share links
+   const shareLinks = {
+     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+     linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(contentTitle)}`,
+     email: `mailto:?subject=${encodeURIComponent(contentTitle)}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`
+   };
+
+   // Create a simple modal with share options
+   const modal = document.createElement('div');
+   modal.style.position = 'fixed';
+   modal.style.top = '50%';
+   modal.style.left = '50%';
+   modal.style.transform = 'translate(-50%, -50%)';
+   modal.style.backgroundColor = 'white';
+   modal.style.padding = '20px';
+   modal.style.borderRadius = '5px';
+   modal.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+   modal.style.zIndex = '1000';
+
+   modal.innerHTML = `
+     <h3>Share: ${contentTitle}</h3>
+     <p><a href="${shareLinks.facebook}" target="_blank">Share on Facebook</a></p>
+     <p><a href="${shareLinks.twitter}" target="_blank">Share on Twitter</a></p>
+     <p><a href="${shareLinks.linkedin}" target="_blank">Share on LinkedIn</a></p>
+     <p><a href="${shareLinks.email}">Share via Email</a></p>
+     <button onclick="this.parentNode.remove()">Close</button>
+   `;
+
+   document.body.appendChild(modal);
+ }
+}
+
+    // Run the function when the page loads
+document.addEventListener('DOMContentLoaded', addShareButtons);
+
+</script>
+
+
 </body>
 
 </html>
