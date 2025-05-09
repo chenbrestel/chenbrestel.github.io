@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעור תורני שבועי</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Heebo', 'David', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .announcement {
+            width: 600px;
+            height: 600px;
+            background-color: #fff9e6;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+            position: relative;
+            padding: 30px;
+            box-sizing: border-box;
+            text-align: center;
+            overflow: hidden;
+        }
+        .announcement::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #c3a26e, #8b4513);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        .bsd {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+            color: #555;
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            border-radius: 50%;
+        }
+        .synagogue-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 3px;
+            color: #555;
+            text-align: center;
+        }
+        .lesson-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #8b4513;
+            margin: 15px 0;
+            clear: both;
+        }
+        .teacher-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 10px 0;
+            color: #333;
+        }
+        .weekly {
+            font-size: 22px;
+            margin: 10px 0;
+            font-weight: normal;
+            background-color: #f0e6d2;
+            padding: 5px 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .parasha {
+            font-size: 24px;
+            margin: 10px 0 10px;
+            color: #8b4513;
+            font-weight: 700;
+        }
+        .questions-container {
+            background-color: rgba(195, 162, 110, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: 20px;
+            overflow-y: visible;
+        }
+        .questions {
+            font-size: 18px;
+            text-align: right;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .question {
+            margin-bottom: 10px;
+            position: relative;
+            padding-right: 20px;
+        }
+        .question:last-child {
+            margin-bottom: 0;
+        }
+        .question::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #8b4513;
+            font-weight: bold;
+        }
+        .decorator {
+            width: 70%;
+            margin: 15px auto;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #c3a26e, transparent);
+            border: none;
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 60px);
+            justify-content: space-between;
+        }
+
+        .main-content {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .invitation {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .time {
+            font-weight: bold;
+            font-size: 20px;
+            color: #8b4513;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .announcement {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .lesson-title {
+                font-size: 28px;
+            }
+
+            .teacher-name {
+                font-size: 22px;
+            }
+
+            .weekly, .parasha {
+                font-size: 18px;
+            }
+
+            .questions {
+                font-size: 16px;
+            }
+
+            .content-wrapper {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="announcement">
+        <div class="header">
+            <div class="bsd">בס"ד ה'תשפ"ה</div>
+            <div class="logo-container">
+                <img src="https://chenbrestel.github.io/torah/images/ohel_bilhah.png" alt="לוגו בית הכנסת" class="logo">
+                <div class="synagogue-name">בית הכנסת אוהל בלהה</div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="main-content">
+                <div class="lesson-title">🕳️ ההיעלמות של אהרון הכהן</div>
+
+                <div class="teacher-name">אלעד בר-נתן</div>
+
+                <div class="weekly">שיעור שבועי</div>
+
+                <div class="parasha">אחרי מות קדושים </div>
+
+                <div class="decorator"></div>
+            </div>
+
+            <div class="questions-container">
+                <div class="questions">
+                    <div class="question">להיכן נעלם אהרן הכהן הגדול בשיא עבודת יוה"כ?</div>
+                    <div class="question">מה הקשר בין תחילת הפרשה שעוסקת בעבודת יוה"כ לסוף הפרשה שעוסקת בעריות?</div>
+                    <div class="question">"שני בני אהרן בקרבתם" - האם בקרבתם טוב נהגו?</div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="invitation">💫 מוזמנים ללימוד וחידוש משותפים</div>
+                <div class="time">ימי רביעי 20:15</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
