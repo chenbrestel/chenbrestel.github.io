@@ -232,5 +232,71 @@
             </div>
         </div>
     </div>
+
+
+
+<!-- Add this right before the closing </body> tag -->
+<div id="download-container" style="display: flex; justify-content: center; margin-top: 20px;">
+  <button id="downloadBtn" style="
+    background-color: #8b4513;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-family: 'Heebo', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+  ">הורד תמונה</button>
+</div>
+
+<!-- Add this script before the closing </body> tag -->
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script>
+  document.getElementById('downloadBtn').addEventListener('click', function() {
+    // Hide the download button before capturing
+    const downloadContainer = document.getElementById('download-container');
+    downloadContainer.style.display = 'none';
+
+    // Capture the announcement div
+    html2canvas(document.querySelector('.announcement'), {
+      backgroundColor: null,
+      scale: 2, // Higher resolution
+      logging: false,
+      useCORS: true // To handle images from other domains
+    }).then(canvas => {
+      // Convert to square if needed
+      const squareCanvas = document.createElement('canvas');
+      const size = Math.max(canvas.width, canvas.height);
+      squareCanvas.width = size;
+      squareCanvas.height = size;
+      const ctx = squareCanvas.getContext('2d');
+
+      // Fill with the same background color as the announcement
+      ctx.fillStyle = '#fff9e6';
+      ctx.fillRect(0, 0, size, size);
+
+      // Calculate position to center the content
+      const xOffset = (size - canvas.width) / 2;
+      const yOffset = (size - canvas.height) / 2;
+
+      // Draw the captured content centered in the square
+      ctx.drawImage(canvas, xOffset, yOffset);
+
+      // Create download link
+      const link = document.createElement('a');
+      link.download = 'שיעור_אמור_' + new Date().toLocaleDateString('he-IL').replace(/\//g, '-') + '.png';
+      link.href = squareCanvas.toDataURL('image/png');
+      link.click();
+
+      // Show the download button again
+      setTimeout(() => {
+        downloadContainer.style.display = 'flex';
+      }, 100);
+    });
+  });
+</script>
+
 </body>
 </html>
