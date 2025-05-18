@@ -1,0 +1,1013 @@
+<!--
+https://chenbrestel.github.io/science/jobs
+https://chenbrestel.github.io/science/jobs/jobs.html
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108048997-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-108048997-1');
+    </script>
+
+    <title>🎯 חיפוש משרה Job Hunt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+          font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 0;
+          color: #333;
+        }
+
+        a {
+          color: #1772d0;
+          target: _blank;
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: #f09228;
+        }
+
+        /* Layout Container */
+        .container {
+          max-width: 800px;
+          margin: auto;
+          padding: 20px;
+        }
+
+        /* Profile Section Styling */
+        .profile-section {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          /* margin-bottom: 40px; */
+        }
+
+        .profile-text {
+          flex: 1 1 60%;
+          padding: 20px;
+        }
+
+        h1 {
+          font-weight: normal;
+          text-align: center;
+        }
+
+        .profile-text h1 {
+          font-size: 2rem;
+          /* margin-bottom: 10px; */
+          font-weight: normal;
+        }
+
+        .profile-text p {
+          margin: 10px 0;
+        }
+
+        .profile-image {
+          flex: 1 1 30%;
+          text-align: center;
+        }
+
+        .profile-image img {
+          max-width: 200px;
+          border-radius: 5%;
+        }
+
+        /* Social Links */
+        .social-links {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .social-links a {
+          margin: 0 10px;
+        }
+
+        /* Section Styling */
+        .section {
+          margin-bottom: 40px;
+        }
+
+        .section-heading {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          /* font-weight: bold; */
+        }
+
+        /* List Styling */
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        /* Publications Section */
+        .publication {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          padding: 10px;
+          overflow: hidden; /* Ensures child elements stay within the border */
+        }
+
+        .publication-media {
+          flex: 1 1 35%; /* Allocates 35% of the space for media */
+          position: relative;
+          width: 100%;
+          aspect-ratio: 4 / 1; /* Ensures a square layout */
+          overflow: hidden;
+          border-radius: 8px;
+        }
+
+        .publication-media img,
+        .publication-media video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain; /* Ensures the image or video fills the container */
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        .publication-media .one {
+          opacity: 1; /* Show the "before" image by default */
+          z-index: 1; /* Ensure it is on top */
+        }
+
+        .publication-media .two {
+          opacity: 0; /* Hide the "after" image by default */
+          z-index: 2; /* Stack it above the "before" image */
+        }
+
+        .publication-media:hover .one {
+          opacity: 0; /* Hide the "before" image on hover */
+        }
+
+        .publication-media:hover .two {
+          opacity: 1; /* Show the "after" image on hover */
+        }
+
+
+        .publication-details {
+          flex: 1 1 60%;
+        }
+
+        .publication-details p {
+          margin: 10px 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+          .profile-section {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          /* .profile-text {
+            text-align: center;
+          } */
+
+          .publication {
+            flex-direction: column;
+          }
+
+          .publication-media {
+            flex: 1 1 100%;
+          }
+
+          .publication-details {
+            flex: 1 1 100%;
+          }
+        }
+
+        .news-section {
+          margin-bottom: 40px;
+        }
+
+        .news-list {
+          list-style-type: disc;
+          margin: 0;
+          padding-left: 20px;
+        }
+
+        .news-list li {
+          /* margin-bottom: 10px; */
+          line-height: 1.6;
+        }
+
+        .news-list a {
+          color: #1772d0;
+          text-decoration: none;
+        }
+
+        .news-list a:hover {
+          color: #f09228;
+        }
+        .researchers-section {
+          margin-bottom: 40px;
+        }
+
+        .researchers-list {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .researchers-list li {
+          margin-bottom: 10px;
+        }
+
+        .researchers-list a {
+          color: #1772d0;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        .researchers-list a:hover {
+          color: #f09228;
+        }
+        .researchers-section {
+          margin-bottom: 40px;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+        }
+        /* Patents Section */
+        .patents-section {
+          margin-bottom: 40px;
+        }
+
+        .section-heading {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+
+        .patents-list {
+          list-style-type: disc;
+          padding-left: 20px;
+          margin: 0;
+        }
+
+        .patents-list li {
+          margin-bottom: 10px;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+        .publication {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication:hover {
+          transform: scale(1.02); /* Slight zoom on hover */
+          box-shadow: 0 0 15px; /* Intensify glow on hover */
+        }
+        .coming-soon .coming-soon-badge {
+          display: inline-block;
+          background-color: #f09228;
+          color: white;
+          padding: 2px 8px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          border-radius: 12px;
+          margin-top: 5px;
+        }
+        .coming-soon img {
+          opacity: 0.5; /* Optional: Make the placeholder image look subdued */
+        }
+
+            .share-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .share-button:hover {
+      background-color: #3367d6;
+    }
+
+
+    </style>
+
+    <!-- Open Graph Meta Tags for WhatsApp -->
+    <meta property="og:title" content="🎯 חיפוש משרה Dr. Chen Brestel | Job Hunt ">
+    <meta property="og:description"
+          content="">
+    <meta property="og:image"
+          content="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXhqN2V1aWNrMzJpYnJsN3pnYjV2NHN5cG80amxyMDljenJ6djRobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RiykPw9tgdOylwFgUe/giphy.gif">
+    <meta property="og:url"
+          content="https://chenbrestel.github.io/science/job_hunt">
+    <meta property="og:type" content="website">
+
+</head>
+
+<body>
+<div class="container">
+    <!-- Profile Section -->
+
+    <header>
+        <div class="header">
+            <p align="left">Bs"d</p>
+            <h1>🎯 חיפוש משרה Job Hunt</h1>
+            <div style="width: 80%;   margin: 0 auto;">
+                <p style="text-align: justify; "></p>
+                <div style="text-align: center; ">
+                    <button class="share-button" onclick="shareContent(this)" style="border: 2px solid navy;">Share this
+                        page
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div class="profile-section">
+        <div class="profile-image">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXhqN2V1aWNrMzJpYnJsN3pnYjV2NHN5cG80amxyMDljenJ6djRobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RiykPw9tgdOylwFgUe/giphy.gif"
+                 alt="">
+        </div>
+
+        <div class="profile-text">
+            <p>
+                Protein engineering is a fascinating field that combines biology, chemistry, and computational tools to
+                design and create new proteins with specific functions. This field has applications in medicine,
+                industry, and environmental science.
+            </p>
+        </div>
+    </div>
+
+    <div class="section applications">
+        <h2 class="section-heading">Applications</h2>
+        <ul class="news-list">
+            <li>Development of therapeutic proteins for treating diseases.</li>
+            <li>Design of enzymes for industrial processes.</li>
+            <li>Creation of biosensors for environmental monitoring.</li>
+            <li>Energy production industry: Engineering proteins for biofuel production and energy storage.</li>
+            <li>Military and HLS (Homeland Security): Developing proteins for biodefense and detection of hazardous
+                materials.
+            </li>
+            <li>etc.</li>
+        </ul>
+    </div>
+
+
+    <!-- Publications Section -->
+    <section class="section">
+        <div class="section-heading">Publications & Code</div>
+
+        <!-- Publication context_dependent_zimmerman_pnas_2024_paper -->
+        <div class="publication highlighted" id="context_dependent_zimmerman_pnas_2024_paper">
+            <div class="publication-media">
+                <img src="images/context_dependent_zimmerman_pnas_2024_paper_logo.png" class="one" alt="Before Image"/>
+                <img src="images/context_dependent_zimmerman_pnas_2024_paper_logo.png" class="two" alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.pnas.org/doi/10.1073/pnas.2313809121" target="_blank"><strong>Context-dependent
+                        design of
+                        induced-fit enzymes using deep
+                        learning generates well-expressed, thermally stable and active
+                        enzymes</strong></a><br>
+                    Lior Zimmerman, Noga Alon
+                    , Itay Levin
+                    , Anna Koganitsky
+                    , Nufar Shpigel
+                    , <strong>Chen Brestel</strong>
+                    , Gideon D. Lapidoth
+                    <br>
+                    <em>PNAS</em>, 5784 2024<br>
+                </p>
+                <p>We show how to design novel enzymes that have improved properties such as higher solubility, higher
+                    melting temperature and higher activity. We even show the
+                    ability to design non-natural enzymatic traits. Our system uses AI & computational biology tools.
+                    The research was conducted by the <a href="https://www.enzymit.com/" target="_blank">Enzymit</a>
+                    team.
+
+                </p>
+                <p>#protein_language #protein_engineering #science #paper #pnas #5784 #2024</p>
+            </div>
+        </div>
+
+        <!-- Publication solvit_github-->
+        <div class="publication highlighted" id="solvit_github">
+            <div class="publication-media">
+                <img src="images/solvit_github_logo.png" class="one" alt="Before Image"/>
+                <img src="images/solvit_github_logo.png" class="two" alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://github.com/Enzymit/SolvIT" target="_blank"><strong>SolvIT GitHub - Protein
+                        Solubility
+                        Prediction Deep
+                        Neural Network </strong></a><br>
+                    <strong>Chen Brestel</strong>,
+                    Lior Zimmerman
+                    <br>
+                    GitHub, 5785 2024<br>
+                </p>
+                <p>We share our SolvIT tool which is a GNN (Graph Neural Network) model that predicts protein solubility
+                    in <em>Escherichia coli</em> and
+                    aid in enzyme design by prioritizing high-solubility candidates from large design sets.
+
+                    Research conducted during my tenure at <a href="https://www.enzymit.com/"
+                                                              target="_blank">Enzymit</a>.
+                    Our small GNN
+                    achieves state-of-the-art performance that
+                    rivals much larger models. The approach is described in our <em>PNAS</em> paper. Welcome to enjoy it
+                    and reference this page.
+
+                </p>
+                <p>#protein_engineering #solubility #gnn #code #github #5785 #2024</p>
+            </div>
+        </div>
+
+        <!-- Publication context_dependent_design_brestel_5785_meds_slides -->
+        <div class="publication highlighted" id="context_dependent_design_brestel_5785_meds">
+            <div class="publication-media">
+
+                <p>
+                    <iframe src="https://www.youtube.com/embed/9d6JH2yM1xE?si=0bDv79aaTibdCMh4"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <!--                    <iframe src="https://www.youtube.com/embed/9d6JH2yM1xE?si=0bDv79aaTibdCMh4"-->
+                    <!--                            title="YouTube video player" frameborder="0"-->
+                    <!--                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"-->
+                    <!--                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen class="two"></iframe>-->
+                </p>
+                <p>
+                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf"></iframe>
+                    <!--                    <iframe src="images/context_dependent_design_brestel_5785_meds_slides.pdf" class="two"></iframe>-->
+
+                </p>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="images/context_dependent_design_brestel_5785_meds_slides.pdf"
+                       target="_blank"><strong>Context-dependent
+                        design of induced-fit enzymes using deep
+                        learning generates well-expressed, thermally stable and active
+                        enzymes Talk</strong></a><br>
+                    <strong>Chen Brestel</strong>
+                    <br>
+                    <a href="https://www.meetup.com/medical-data-science-meetup-group//" target="_blank"><em>MeDS
+                        Club</em>
+                        5785 2025
+                    </a>
+                    <br>
+                    <a href="https://www.youtube.com/watch?v=9d6JH2yM1xE&list=PLqrXddMTC6YvvEIWecHgnHDf4mheykZEO"
+                       target="_blank">YouTube</a>
+                    <br>
+                    <a href="images/context_dependent_design_brestel_5785_meds_slides.pdf" target="_blank">Slides</a>
+                </p>
+                <p>We show how to design novel enzymes that have improved properties such as higher solubility, higher
+                    melting temperature and higher activity. We even show the
+                    ability to design non-natural enzymatic traits. Our system use AI & computational biology tools.
+                    Research conducted during my tenure at <a href="https://www.enzymit.com/"
+                                                              target="_blank">Enzymit</a>.
+
+                </p>
+                <p>#protein_language #protein_engineering #science #slides #talk #meds #5785 #2025</p>
+            </div>
+        </div>
+
+
+        <!-- Publication context_dependent_design_brestel_5785_isranalytica_slides -->
+        <div class="publication highlighted" id="context_dependent_design_brestel_5785_isranalytica">
+            <div class="publication-media">
+                <iframe src="images/context_dependent_design_brestel_5785_isranalytica_slides.pdf" class="one"></iframe>
+                <iframe src="images/context_dependent_design_brestel_5785_isranalytica_slides.pdf" class="two"></iframe>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="images/context_dependent_design_brestel_5785_isranalytica_slides.pdf"
+                       target="_blank"><strong>Context-dependent
+                        design of induced-fit enzymes using deep
+                        learning generates well-expressed, thermally stable and active
+                        enzymes Slides</strong></a><br>
+                    <strong>Chen Brestel</strong>
+                    <br>
+                    <a href="https://2025.isranalytica.com/" target="_blank"><em>ISRANALYTICA</em> 5785 2025
+                        Conference</a>
+                    <br>
+                </p>
+                <p>We show how to design novel enzymes that have improved properties such as higher solubility, higher
+                    melting temperature and higher activity. We even show the
+                    ability to design non-natural enzymatic traits. Our system use AI & computational biology tools.
+                    Research conducted during my tenure at <a href="https://www.enzymit.com/"
+                                                              target="_blank">Enzymit</a>.
+
+                </p>
+                <p>#protein_language #protein_engineering #science #slides #talk #isranalytica #5785 #2025</p>
+            </div>
+        </div>
+
+
+        <!-- Publication computer_make_me_a_sheep_brestel_2023_big_science_in_small -->
+        <div class="publication highlighted" id="computer_make_me_a_sheep_brestel_2023_big_science_in_small">
+            <div class="publication-media">
+                <img src="images/computer_make_me_a_sheep_brestel_2023_big_science_in_small.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/computer_make_me_a_sheep_brestel_2023_big_science_in_small.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.lbscience.org/2023/05/28/%D7%9E%D7%97%D7%A9%D7%91-%D7%A6%D7%95%D7%A8-%D7%9C%D7%99-%D7%9B%D7%91%D7%A9%D7%94/"
+                       target="_blank"><strong>מחשב,
+                        צור לי כבשה</strong></a><br>
+                    <strong>Chen Brestel</strong>
+                    , <a
+                        href="https://www.google.com/search?q=%D7%90%D7%90%D7%99%D7%A2%D7%93+%D7%91%D7%A8%D7%A1%D7%98%D7%9C&oq=%D7%90%D7%90%D7%99%D7%A2%D7%93+%D7%91%D7%A8%D7%A1%D7%98%D7%9C&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQABgNGIAEMgoIAhAAGIAEGKIEMgcIAxAAGO8FMgoIBBAAGIAEGKIEMgoIBRAAGIAEGKIEMgoIBhAAGIAEGKIE0gEINDcwNGowajeoAgCwAgA&sourceid=chrome&ie=UTF-8"
+                        target="_blank">Aviad
+                    Brestel</a>
+                    <br>
+                    <em>מדע גדול, בקטנה</em>, 5784 2024<br>
+                </p>
+                <p>
+                    אנו מתארים את החידושים של השנים האחרונות ומציגים
+                    יכולת מלהיבה במיוחד ליצור חלבונים חדשניים ולפענח את המבנה התלת־ממדי ואת מאפייני הפעולה של חלבונים.
+                    בזכות חידושים אלו נוכל להאיץ משמעותית את שיפור עולמנו במגוון תחומים: ברפואה, בייצור המזון, באיכות
+                    הסביבה, בהפקת אנרגיה ועוד.
+                    התיאור מוצג בשפה בהירה ופשוטה השווה לכל נפש. מוזמנים להעשיר את ידיעתכם במדע פופולרי.
+                </p>
+                <p>#protein_language #protein_engineering #popular_science #review #5783 #2023</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- section Research Resources-->
+    <section class="section">
+        <div class="section-heading">Research Resources</div>
+
+        <!--         Google DeepMind TxGemma Blog -->
+        <div class="publication highlighted" id="tx_gemma_5785_blog">
+            <div class="publication-media">
+                <img src="images/tx_gemma_5785_blog_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/tx_gemma_5785_blog_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://developers.googleblog.com/en/introducing-txgemma-open-models-improving-therapeutics-development/"
+                       target="_blank"><strong>Introducing TxGemma: Open models to improve therapeutics development
+
+                    </strong></a><br>
+                    Shekoofeh Azizi
+                    <br>
+                    <strong>Google DeepMind</strong>
+                    <br>
+                    <em>Blog</em> , 5785 2025<br>
+                </p>
+                <p>
+                    TxGemma is a collection of open models designed to improve the efficiency of therapeutic development
+                    by leveraging the power of large language models.
+
+                    Building on Google DeepMind's Gemma, a family of lightweight, state-of-the-art open models, TxGemma
+                    is specifically trained to understand and predict the properties of therapeutic entities throughout
+                    the entire discovery process, from identifying promising targets to helping predict clinical trial
+                    outcomes. This can potentially shorten the time from lab to bedside, and reduce the costs associated
+                    with traditional methods.
+                </p>
+                <p>
+                    🌷 Thanks to Olga Rapp for sharing with #meds on whatsapp
+                </p>
+                <p>#drug_discovery #protein_language #protein_engineering #blog #5785 #2025</p>
+                <!--                    <button class="share-button" onclick="shareContent(this)">Share</button>-->
+
+            </div>
+        </div>
+
+
+        <!--         Google DeepMind AlphaFold 3 Podcast -->
+        <div class="publication highlighted" id="alphafold3_5785_blog">
+            <div class="publication-media">
+                <img src="images/alphafold3_5785_blog_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/alphafold3_5785_blog_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://blog.google/technology/ai/google-deepmind-isomorphic-alphafold-3-ai-model/"
+                       target="_blank"><strong> AlphaFold 3 predicts the structure and interactions of all of life’s
+                        molecules
+                    </strong></a><br>
+                    <strong>Google DeepMind</strong>
+                    <br>
+                    <em>Blog</em> , 5784 2024<br>
+                </p>
+                <p>
+                    Introducing AlphaFold 3, a new AI model developed by Google DeepMind and Isomorphic Labs. By
+                    accurately predicting the structure of proteins, DNA, RNA, ligands and more, and how they interact,
+                    we hope it will transform our understanding of the biological world and drug discovery.
+                </p>
+                <p>#protein_language #protein_engineering #popular_science #blog #5784 #2024</p>
+            </div>
+        </div>
+
+
+        <!--         Facebook ESM 3 Blog -->
+
+        <div class="publication highlighted" id="esm3_5785_blog">
+            <div class="publication-media">
+                <img src="images/esm3_5785_blog_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/esm3_5785_blog_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.evolutionaryscale.ai/blog/esm3-release/"
+                       target="_blank"><strong>ESM3: Simulating 500 million years of evolution with a language model
+                    </strong></a><br>
+                    <strong>Facebook</strong>
+                    <br>
+                    <em>Blog</em>, 5784 2024<br>
+                </p>
+                <p>Update January 2025: We're thrilled to announce the publication of ESM3 in Science Magazine. We’re
+                    opening our API for biological intelligence, now in public beta, allowing scientists in academia and
+                    industry a free limited time preview of the capabilities of some of our models through Forge.</p>
+                <p>#protein_language #protein_engineering #popular_science #blog #5784 #2024</p>
+            </div>
+        </div>
+
+
+        <!--         Google DeepMind AlphaFold 2 Podcast -->
+
+        <div class="publication highlighted" id="alhpafold2_5782_podcast">
+            <div class="publication-media">
+                <!--                width="560" height="315"-->
+                <iframe src="https://www.youtube.com/embed/ZfJhOTZi0WE?si=ED1zc_9  dAfHpLJRv"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.youtube.com/embed/ZfJhOTZi0WE?si=ED1zc_9dAfHpLJRv/"
+                       target="_blank"><strong>A breakthrough unfolds
+                    </strong></a><br>
+                    <strong>Google DeepMind</strong>
+                    <br>
+                    <em>YouTube</em>, 5782 2022<br>
+                </p>
+                <p>In December 2019, DeepMind’s AI system, AlphaFold, solved a 50-year-old grand challenge in biology,
+                    known as the protein-folding problem. A headline in the journal Nature read, “It will change
+                    everything” and the President of the UK's Royal Society called it a “stunning advance [that arrived]
+                    decades before many in the field would have predicted”. In this episode, Hannah uncovers the inside
+                    story of AlphaFold from the people who made it happen and finds out how it could help transform the
+                    future of healthcare and medicine.
+                </p>
+                <p>#protein_language #protein_engineering #popular_science #podcast #5782 #2022</p>
+            </div>
+        </div>
+
+
+        <!--         Google DeepMind AlphaFold 2 Blog -->
+        <div class="publication highlighted" id="alhpafold2_5781_blog">
+            <div class="publication-media">
+                <img src="images/alhpafold2_5781_blog_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/alhpafold2_5781_blog_logo.png" class="two"
+                     alt="Before Image"/>
+
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://deepmind.google/discover/blog/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology/
+"
+                       target="_blank"><strong>AlphaFold: a solution to a 50-year-old grand challenge in biology
+                    </strong></a><br>
+                    <strong>Google DeepMind</strong>
+                    <br>
+                    <em>Blog</em>, 5781 2020<br>
+                </p>
+                <p>Proteins are essential to life, supporting practically all its functions. They are large complex
+                    molecules, made up of chains of amino acids, and what a protein does largely depends on its unique
+                    3D structure. Figuring out what shapes proteins fold into is known as the “protein folding problem”,
+                    and has stood as a grand challenge in biology for the past 50 years. In a major scientific advance,
+                    the latest version of our AI system AlphaFold has been recognised as a solution to this grand
+                    challenge by the organisers of the biennial Critical Assessment of protein Structure Prediction
+                    (CASP). This breakthrough demonstrates the impact AI can have on scientific discovery and its
+                    potential to dramatically accelerate progress in some of the most fundamental fields that explain
+                    and shape our world.
+
+                </p>
+                <p>#protein_language #protein_engineering #popular_science #blog #5781 #2020</p>
+            </div>
+        </div>
+
+
+        <!--
+                research_publication_trends_2015_2024
+                Biology & Chemistry Research Publication Trends (2015-2024)
+                Publications in Nature, Science, and PNAS journals
+
+
+
+                https://claude.site/artifacts/3836c816-ae44-4e01-ae63-2b6810afc9b1
+
+                -->
+    </section>
+
+    <!-- section Conferences-->
+    <section class="section">
+        <div class="section-heading">Conferences</div>
+
+        <!--         Sheba ARC Oncology AI 5785 2025 Conference -->
+        <div class="publication highlighted" id="sheba_arc_oncology_ai_5785_conference">
+            <div class="publication-media">
+                <img src="images/sheba_arc_oncology_ai_5785_conference_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/sheba_arc_oncology_ai_5785_conference_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.sheba.co.il/248943"
+                       target="_blank"><strong> Sheba ARC Oncology AI 5785 2025 Conference </strong></a><br>
+
+                    <strong>Sheba</strong>
+                    , Israel
+                    <br> 04-Nissan-5785 | 02-Apr-2025
+                    <br> <em>Conference</em>
+                </p>
+                <p>
+
+                </p>
+                <p>
+                    🌷 Thanks to Yuval Avnir for sharing
+                </p>
+                <p>#oncology #ai #conference #5785 #2025</p>
+                <!--                    <button class="share-button" onclick="shareContent(this)">Share</button>-->
+
+            </div>
+        </div>
+
+
+    </section>
+
+    <!-- section Communities-->
+    <section class="section">
+        <div class="section-heading">Communities</div>
+
+        <!--meds_community_channels-->
+        <div class="publication highlighted" id="meds_community_channels">
+            <div class="publication-media">
+                <img src="images/meds_community_channels_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/meds_community_channels_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.facebook.com/groups/452832939966464/"
+                       target="_blank"><strong>MeDS - Medical Data Science Israel</strong></a><br>
+
+                     <em>Community</em> channels
+                </p>
+                <p>
+                    MeDS Overview <br>
+                    We are an Israeli community of data scientist and clinicians. Our goal is to share information,
+                    promote initiatives and connect over the various challenges of data science and machine learning in
+                    the healthcare industry.
+                </p>
+                <p>#ai #data_science #healthcare #medical #community #israel </p>
+                <!--                    <button class="share-button" onclick="shareContent(this)">Share</button>-->
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- section Seminars-->
+    <section class="section">
+        <div class="section-heading">Seminars</div>
+
+        <!--meds_community_channels-->
+        <div class="publication highlighted" id="webinar_cracking_the_code">
+            <div class="publication-media">
+                <img src="images/webinar_cracking_the_code_logo.png" class="one"
+                     alt="Before Image"/>
+                <img src="images/webinar_cracking_the_code_logo.png" class="two"
+                     alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://www.tickettailor.com/events/scienceabroad/5858208/o/c467a4f4"
+                       target="_blank"><strong>Webinar: Cracking the Code- How to Successfully Present AI Technologies to Pharma R&D</strong></a><br>
+                <br>
+                     <em>ScienceAbroad</em>
+
+                </p>
+                <p>
+
+Mon Apr 7, 2025 19:00 - 20:00 IDT
+
+                </p>
+                <p>                    🌷 Thanks to Yuval Avnir for sharing</p>
+                <p>#ai #data_science #healthcare #medical #community #israel </p>
+                <!--                    <button class="share-button" onclick="shareContent(this)">Share</button>-->
+
+            </div>
+        </div>
+
+
+    </section>
+
+
+    <!-- section Footer-->
+    <section class="section">
+        <div class="section researchers-section" align="center">
+            <p>Thanks to <a href="https://www.amirbar.net/" target="_blank">Amir Bar</a> for the page template </p>
+            <p>&copy; 5785 2025 Chen Brestel. All rights reserved.</p>
+            <p>Welcome to follow on social media</p>
+            <iframe src="https://bio.link/chenbrestel" height="400"></iframe>
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+    document.querySelectorAll('.publication-media video').forEach(video => {
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0; // Reset to the first frame
+    });
+  });
+
+
+</script>
+
+<script>
+
+    // Function to add share buttons to all content sections
+function addShareButtons() {
+ const contentSections = document.querySelectorAll('.publication-details');
+
+ contentSections.forEach(section => {
+   // Create a share button
+   const shareButton = document.createElement('button');
+   shareButton.className = 'share-button';
+   shareButton.textContent = 'Share';
+
+   // Customize button text based on section ID
+   const sectionId = section.id;
+   if (sectionId.startsWith('article')) {
+     shareButton.textContent = 'Share This Article';
+   } else if (sectionId.startsWith('tutorial')) {
+     shareButton.textContent = 'Share This Tutorial';
+   }
+
+   // Add click event
+   shareButton.addEventListener('click', function() {
+     shareContent(this);
+   });
+
+   // Append the button to the section
+   section.appendChild(shareButton);
+ });
+}
+
+function convertToSingleLine(input) {
+  return input.replace(/\s+/g, ' ').trim();
+}
+
+function shareContent(button) {
+ // Get the grand-parent div (content section)
+ let contentSection;
+  contentSection = button.closest('.publication');
+
+  let contentId, contentTitle;
+ if (contentSection) {
+ // Get the ID of the content section
+  contentId = contentSection.id;
+
+ // Get the title from the h2 element within the content section
+  contentTitle = contentSection.querySelector('a').textContent;
+ } else {
+     contentSection = button.closest('.header');
+ contentId = "";
+ contentTitle =  contentSection.querySelector('h1').textContent;
+
+ }
+
+contentTitle = convertToSingleLine(contentTitle)
+
+ // Create a custom URL with the content ID as a parameter
+ const shareUrl = window.location.origin + window.location.pathname + '#' + contentId;
+
+ // Prepare custom share text based on the content ID
+ let shareText;
+
+ if (contentId.startsWith('article')) {
+   shareText = 'Check out this article: ' + contentTitle;
+ } else if (contentId.startsWith('tutorial')) {
+   shareText = 'I found this helpful tutorial: ' + contentTitle;
+ } else {
+   shareText = 'Check this out: ' + contentTitle;
+ }
+
+ // Try to use the Web Share API
+ if (navigator.share) {
+   navigator.share({
+     title: contentTitle,
+     text: shareText,
+     url: shareUrl
+   })
+   .then(() => console.log('Share successful'))
+   .catch((error) => console.log('Error sharing:', error));
+ } else {
+   // Fallback for browsers that don't support the Web Share API
+   // Create custom share links
+   const shareLinks = {
+     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+     linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(contentTitle)}`,
+     email: `mailto:?subject=${encodeURIComponent(contentTitle)}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`
+   };
+
+   // Create a simple modal with share options
+   const modal = document.createElement('div');
+   modal.style.position = 'fixed';
+   modal.style.top = '50%';
+   modal.style.left = '50%';
+   modal.style.transform = 'translate(-50%, -50%)';
+   modal.style.backgroundColor = 'white';
+   modal.style.padding = '20px';
+   modal.style.borderRadius = '5px';
+   modal.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+   modal.style.zIndex = '1000';
+
+   modal.innerHTML = `
+     <h3>Share: ${contentTitle}</h3>
+     <p><a href="${shareLinks.facebook}" target="_blank">Share on Facebook</a></p>
+     <p><a href="${shareLinks.twitter}" target="_blank">Share on Twitter</a></p>
+     <p><a href="${shareLinks.linkedin}" target="_blank">Share on LinkedIn</a></p>
+     <p><a href="${shareLinks.email}">Share via Email</a></p>
+     <button onclick="this.parentNode.remove()">Close</button>
+   `;
+
+   document.body.appendChild(modal);
+ }
+}
+
+    // Run the function when the page loads
+document.addEventListener('DOMContentLoaded', addShareButtons);
+
+</script>
+
+
+</body>
+
+</html>
