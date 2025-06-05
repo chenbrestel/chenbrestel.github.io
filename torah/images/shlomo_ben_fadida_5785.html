@@ -128,7 +128,7 @@
         }
         .decorator {
             width: 70%;
-            margin: 15px auto;
+            margin: 5px auto;
             height: 4px;
             background: linear-gradient(90deg, transparent, #c3a26e, transparent);
             border: none;
@@ -168,15 +168,15 @@
                 height: auto;
                 min-height: 100vh;
                 border-radius: 0;
-                padding: 20px;
+                padding: 10px;
             }
 
             .lesson-title {
-                font-size: 28px;
+                font-size: 25px;
             }
 
             .teacher-name {
-                font-size: 22px;
+                font-size: 21px;
             }
 
             .weekly, .parasha {
@@ -206,11 +206,12 @@
 
         <div class="content-wrapper">
             <div class="main-content">
-                <div class="lesson-title">אזכרה שלמה בן פדידה ז"ל</div>
+                <div class="lesson-title">אזכרה
+  לשלמה בן פדידה ז"ל פיינה [לבנון -> ישראל]</div>
 
-                <div class="teacher-name">יוסי דורה</div>
+                <div class="teacher-name"> יוסי דורה (קרוב של שלמה ז"ל)</div>
 
-                <div class="weekly">שיעור דף יומי</div>
+                <div class="weekly">במסגרת שיעור הדף היומי</div>
 
 <!--                <div class="parasha">נשא</div>-->
 
@@ -219,9 +220,11 @@
 
             <div class="questions-container">
                 <div class="questions">
-<!--                    <div class="question">מה עניין שמיטה אצל הר סיני?</div>-->
-<!--                    <div class="question">נעיין ונלמד את שיטתם של אור החיים והכלי יקר</div>-->
-<!--                    <div class="question">מדוע ר' יצחק נפחא במדרש מכנה את שומרי השמיטה "גיבורי כוח עושי דברו"?</div>-->
+                    <div class="question">שלמה עלה לארץ מלבנון בזמן מלחמת האזרחים בלבנון. לאחר שנפצע במלחמה פציעה אנושה הצליח להחלים ממנה חלקית, בהיותו נכה ועדיין זקוק לניתוחים וטיפול רפואי הצליח בחסדי שמים לזכות ולעלות לארץ, כאן השלים סדרת ניתוחים, אך נשאר נכה בפלג גופו התחתון,
+</div>
+                    <div class="question">כאן בישראל גר עד סוף ימיו בעיר חולון
+</div>
+                    <div class="question">שלמה לא זכה למשפחה משלו אך היה דוד אהוב לא רק לאחייניו אלא לכל המשפחה המורחבת, ולכן גם ליוסי דורה היו'</div>
                 </div>
             </div>
 
@@ -285,7 +288,7 @@
 
       // Create download link
       const link = document.createElement('a');
-      link.download = 'nasso_5785_' + '.png';
+      link.download = 'shlomo_ben_fadida_5785' + '.png';
 <!--      link.download = 'nasso_5785_' + new Date().toLocaleDateString('he-IL').replace(/\//g, '-') + '.png';-->
       link.href = squareCanvas.toDataURL('image/png');
       link.click();
