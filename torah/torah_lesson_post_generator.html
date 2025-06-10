@@ -415,15 +415,22 @@
         </div>
     </div>
 
-    <script src="https://unpkg.com/hebcal@2.5.0/dist/hebcal.min.js"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/@hebcal/core@5.4.0/dist/bundle.min.js"></script>
     <script>
         function convertToJewishDate(date = new Date()) {
-            const hdate = new Hebcal.HDate(date);
-            const jewishYear = hdate.getFullYear();
-            const jewishMonth = hdate.getMonthName();
-            const jewishDay = hdate.getDate();
-            return `${jewishYear}_${jewishMonth}_${jewishDay}`;
+            try {
+                const hdate = new Hebcal.HDate(date);
+                const jewishYear = hdate.getFullYear();
+                const jewishMonth = hdate.getMonthName('h');
+                const jewishDay = hdate.getDate();
+                return `${jewishYear}_${jewishMonth}_${jewishDay}`;
+            } catch (error) {
+                console.log('Hebcal error, using regular date:', error);
+                // Fallback to regular date if Hebcal fails
+                const now = new Date();
+                return now.getFullYear() + '_' + (now.getMonth() + 1) + '_' + now.getDate();
+            }
         }
 
         function updatePreview() {
@@ -483,13 +490,21 @@
 
         function generateAndDownloadImage() {
             const downloadContainer = document.getElementById('download-container');
-            downloadContainer.style.display = 'none';
+            const downloadBtn = document.getElementById('downloadBtn');
+            const shareBtn = document.getElementById('shareBtn');
+
+            // Show loading state
+            downloadBtn.textContent = 'מוריד...';
+            downloadBtn.disabled = true;
+            shareBtn.disabled = true;
+            downloadContainer.style.display = 'flex';
 
             html2canvas(document.querySelector('.announcement'), {
                 backgroundColor: null,
                 scale: 2,
                 logging: false,
-                useCORS: true
+                useCORS: true,
+                allowTaint: true
             }).then(canvas => {
                 const squareCanvas = createSquareCanvas(canvas);
 
@@ -498,21 +513,38 @@
                 link.href = squareCanvas.toDataURL('image/png');
                 link.click();
 
-                setTimeout(() => {
-                    downloadContainer.style.display = 'flex';
-                }, 100);
+                // Reset button state
+                downloadBtn.textContent = 'הורד תמונה';
+                downloadBtn.disabled = false;
+                shareBtn.disabled = false;
+            }).catch(error => {
+                console.error('Error generating image:', error);
+                alert('שגיאה ביצירת התמונה. אנא נסה שוב.');
+
+                // Reset button state
+                downloadBtn.textContent = 'הורד תמונה';
+                downloadBtn.disabled = false;
+                shareBtn.disabled = false;
             });
         }
 
         function generateAndShareImage() {
             const downloadContainer = document.getElementById('download-container');
-            downloadContainer.style.display = 'none';
+            const downloadBtn = document.getElementById('downloadBtn');
+            const shareBtn = document.getElementById('shareBtn');
+
+            // Show loading state
+            shareBtn.textContent = 'משתף...';
+            shareBtn.disabled = true;
+            downloadBtn.disabled = true;
+            downloadContainer.style.display = 'flex';
 
             html2canvas(document.querySelector('.announcement'), {
                 backgroundColor: null,
                 scale: 2,
                 logging: false,
-                useCORS: true
+                useCORS: true,
+                allowTaint: true
             }).then(canvas => {
                 const squareCanvas = createSquareCanvas(canvas);
 
@@ -532,7 +564,12 @@
                     };
 
                     if (navigator.canShare && navigator.canShare(shareData)) {
-                        navigator.share(shareData).catch(err => {
+                        navigator.share(shareData).then(() => {
+                            // Reset button state after successful share
+                            shareBtn.textContent = 'שתף תמונה';
+                            shareBtn.disabled = false;
+                            downloadBtn.disabled = false;
+                        }).catch(err => {
                             console.log('Error sharing:', err);
                             fallbackShare(squareCanvas, shareText);
                         });
@@ -540,10 +577,14 @@
                         fallbackShare(squareCanvas, shareText);
                     }
                 }, 'image/png');
+            }).catch(error => {
+                console.error('Error generating image:', error);
+                alert('שגיאה ביצירת התמונה. אנא נסה שוב.');
 
-                setTimeout(() => {
-                    downloadContainer.style.display = 'flex';
-                }, 100);
+                // Reset button state
+                shareBtn.textContent = 'שתף תמונה';
+                shareBtn.disabled = false;
+                downloadBtn.disabled = false;
             });
         }
 
