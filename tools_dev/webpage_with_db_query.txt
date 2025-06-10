@@ -1,0 +1,22 @@
+# webpage_with_db_query.txt
+https://claude.ai/share/34f49ed9-966b-47be-80f4-379e1b1111ed
+
+We have a webpage that displays publications.
+Each publication has the following properties:
+publication-id
+publication-media
+publication-details
+publication-title-hebrew
+publication-title-english
+publication-link
+publication-hashtags-hebrew
+publication-hashtags-english
+publication-author
+publication-platform
+publication-year-jewish
+publication-year-civil
+
+Recommend an architecture to refactor the current webpage such that wel will have a database containing those publications and the webpage will show them.
+
+In case the webpage is hosted on github pages which enable static pages what is your recommendation?
+

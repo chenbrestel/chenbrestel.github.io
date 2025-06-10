@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📖 מחולל הודעות שיעור תורני  | Dr. Chen Brestel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+        body {
+            font-family: 'Heebo', 'David', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            display: flex;
+            gap: 30px;
+            min-height: 100vh;
+            flex-wrap: wrap;
+        }
+
+        .form-container {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            height: fit-content;
+        }
+
+        .form-container h2 {
+            color: #8b4513;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 8px 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: #8b4513;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 60px;
+        }
+
+        .preview-container {
+            flex: 1;
+            min-width: 400px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .announcement {
+            width: 600px;
+            height: 600px;
+            background-color: #fff9e6;
+            border: none;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(139, 69, 19, 0.15);
+            position: relative;
+            padding: 15px;
+            box-sizing: border-box;
+            text-align: center;
+            overflow: hidden;
+        }
+        .announcement::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: linear-gradient(90deg, #c3a26e, #8b4513);
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 7px;
+        }
+        .bsd {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0;
+            color: #555;
+        }
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo {
+            width: 80px;
+            height: auto;
+            display: block;
+            border-radius: 50%;
+        }
+        .synagogue-name {
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 3px;
+            color: #555;
+            text-align: center;
+        }
+        .lesson-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #8b4513;
+            margin: 0px 0;
+            clear: both;
+        }
+        .teacher-name {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0px 0;
+            color: #333;
+        }
+        .weekly {
+            font-size: 22px;
+            margin: 0px 0;
+            font-weight: normal;
+            background-color: #f0e6d2;
+            padding: 5px 20px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .parasha {
+            font-size: 24px;
+            margin: 0px 0 10px;
+            color: #8b4513;
+            font-weight: 700;
+        }
+        .questions-container {
+            background-color: rgba(195, 162, 110, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            overflow-y: visible;
+        }
+        .questions {
+            font-size: 18px;
+            text-align: right;
+            line-height: 1.4;
+            max-width: 100%;
+        }
+        .question {
+            margin-bottom: 5px;
+            position: relative;
+            padding-right: 20px;
+        }
+        .question:last-child {
+            margin-bottom: 0;
+        }
+        .question::before {
+            content: "•";
+            position: absolute;
+            right: 0;
+            color: #8b4513;
+            font-weight: bold;
+        }
+        .decorator {
+            width: 70%;
+            margin: 15px auto;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #c3a26e, transparent);
+            border: none;
+        }
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 180px);
+            justify-content: space-between;
+        }
+
+        .main-content {
+            margin-bottom: 0;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 0px;
+        }
+
+        .invitation {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 0px;
+        }
+
+        .time {
+            font-weight: bold;
+            font-size: 28px;
+            color: #8b4513;
+        }
+
+        #download-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        #downloadBtn, #shareBtn {
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-family: 'Heebo', sans-serif;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+
+        #downloadBtn:hover, #shareBtn:hover {
+            background-color: #a0541a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        #shareBtn {
+            background-color: #2563eb;
+        }
+
+        #shareBtn:hover {
+            background-color: #1d4ed8;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1000px) {
+            body {
+                flex-direction: column;
+            }
+
+            .form-container, .preview-container {
+                min-width: auto;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .announcement {
+                width: 100%;
+                height: auto;
+                min-height: 100vh;
+                border-radius: 0;
+                padding: 20px;
+            }
+
+            .lesson-title {
+                font-size: 28px;
+            }
+
+            .teacher-name {
+                font-size: 22px;
+            }
+
+            .weekly, .parasha {
+                font-size: 18px;
+            }
+
+            .questions {
+                font-size: 16px;
+            }
+
+            .content-wrapper {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>הגדרות השיעור</h2>
+
+        <div class="form-group">
+            <label for="bsd">בס"ד ושנה:</label>
+            <input type="text" id="bsd" value="בס&quot;ד ה'תשפ&quot;ה">
+        </div>
+
+        <div class="form-group">
+            <label for="logoSrc">כתובת הלוגו:</label>
+            <input type="text" id="logoSrc" value="https://chenbrestel.github.io/torah/images/ohel_bilhah.png">
+        </div>
+
+        <div class="form-group">
+            <label for="synagogueName1">שם בית הכנסת - שורה 1:</label>
+            <input type="text" id="synagogueName1" value="בית הכנסת אוהל בלהה">
+        </div>
+
+        <div class="form-group">
+            <label for="synagogueName2">שם בית הכנסת - שורה 2:</label>
+            <input type="text" id="synagogueName2" value="דולינסקי 4, רמת אהרן, רחובות">
+        </div>
+
+        <div class="form-group">
+            <label for="lessonTitle">כותרת השיעור:</label>
+            <textarea id="lessonTitle" placeholder="הכנס כותרת לשיעור"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="teacherName">שם המרצה:</label>
+            <input type="text" id="teacherName" value="אלעד בר איתן">
+        </div>
+
+        <div class="form-group">
+            <label for="weekly">סוג השיעור:</label>
+            <input type="text" id="weekly" value="שיעור שבועי">
+        </div>
+
+        <div class="form-group">
+            <label for="parasha">פרשת השבוע:</label>
+            <input type="text" id="parasha" placeholder="הכנס שם פרשה">
+        </div>
+
+        <div class="form-group">
+            <label for="question1">שאלה 1:</label>
+            <textarea id="question1" placeholder="הכנס שאלה ראשונה"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="question2">שאלה 2:</label>
+            <textarea id="question2" placeholder="הכנס שאלה שנייה"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="question3">שאלה 3:</label>
+            <textarea id="question3" placeholder="הכנס שאלה שלישית"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="invitation">הזמנה:</label>
+            <input type="text" id="invitation" value="💫 מוזמנים ללימוד וחידוש משותפים">
+        </div>
+
+        <div class="form-group">
+            <label for="time">זמן השיעור:</label>
+            <input type="text" id="time" value="ימי רביעי 20:15">
+        </div>
+    </div>
+
+    <div class="preview-container">
+        <div>
+            <div class="announcement">
+                <div class="header">
+                    <div class="bsd" id="display-bsd">בס"ד ה'תשפ"ה</div>
+                    <div class="logo-container">
+                        <img src="https://chenbrestel.github.io/torah/images/ohel_bilhah.png" alt="לוגו בית הכנסת" class="logo" id="display-logo">
+                        <div class="synagogue-name" id="display-synagogue1">בית הכנסת אוהל בלהה</div>
+                        <div class="synagogue-name" id="display-synagogue2">דולינסקי 4, רמת אהרן, רחובות</div>
+                    </div>
+                </div>
+
+                <div class="content-wrapper">
+                    <div class="main-content">
+                        <div class="lesson-title" id="display-lesson-title"></div>
+
+                        <div class="teacher-name" id="display-teacher">אלעד בר איתן</div>
+
+                        <div class="weekly" id="display-weekly">שיעור שבועי</div>
+
+                        <div class="parasha" id="display-parasha"></div>
+
+                        <div class="decorator"></div>
+                    </div>
+
+                    <div class="questions-container" id="questions-container">
+                        <div class="questions">
+                            <div class="question" id="display-question1"></div>
+                            <div class="question" id="display-question2"></div>
+                            <div class="question" id="display-question3"></div>
+                        </div>
+                    </div>
+
+                    <div class="footer">
+                        <div class="invitation" id="display-invitation">💫 מוזמנים ללימוד וחידוש משותפים</div>
+                        <div class="time" id="display-time">ימי רביעי 20:15</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="download-container">
+                <button id="downloadBtn">הורד תמונה</button>
+                <button id="shareBtn">שתף תמונה</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/hebcal@2.5.0/dist/hebcal.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script>
+        function convertToJewishDate(date = new Date()) {
+            const hdate = new Hebcal.HDate(date);
+            const jewishYear = hdate.getFullYear();
+            const jewishMonth = hdate.getMonthName();
+            const jewishDay = hdate.getDate();
+            return `${jewishYear}_${jewishMonth}_${jewishDay}`;
+        }
+
+        function updatePreview() {
+            // Update all display elements
+            document.getElementById('display-bsd').textContent = document.getElementById('bsd').value;
+            document.getElementById('display-logo').src = document.getElementById('logoSrc').value;
+            document.getElementById('display-synagogue1').textContent = document.getElementById('synagogueName1').value;
+            document.getElementById('display-synagogue2').textContent = document.getElementById('synagogueName2').value;
+            document.getElementById('display-lesson-title').textContent = document.getElementById('lessonTitle').value;
+            document.getElementById('display-teacher').textContent = document.getElementById('teacherName').value;
+            document.getElementById('display-weekly').textContent = document.getElementById('weekly').value;
+            document.getElementById('display-parasha').textContent = document.getElementById('parasha').value;
+            document.getElementById('display-invitation').textContent = document.getElementById('invitation').value;
+            document.getElementById('display-time').textContent = document.getElementById('time').value;
+
+            // Update questions and hide empty ones
+            const questions = ['question1', 'question2', 'question3'];
+            let hasQuestions = false;
+
+            questions.forEach(q => {
+                const value = document.getElementById(q).value.trim();
+                const displayElement = document.getElementById('display-' + q);
+
+                if (value) {
+                    displayElement.textContent = value;
+                    displayElement.style.display = 'block';
+                    hasQuestions = true;
+                } else {
+                    displayElement.style.display = 'none';
+                }
+            });
+
+            // Hide questions container if no questions
+            const questionsContainer = document.getElementById('questions-container');
+            if (!hasQuestions) {
+                questionsContainer.style.display = 'none';
+            } else {
+                questionsContainer.style.display = 'block';
+            }
+        }
+
+        // Add event listeners to all form inputs
+        const inputs = document.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', updatePreview);
+        });
+
+        // Download functionality
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            generateAndDownloadImage();
+        });
+
+        // Share functionality
+        document.getElementById('shareBtn').addEventListener('click', function() {
+            generateAndShareImage();
+        });
+
+        function generateAndDownloadImage() {
+            const downloadContainer = document.getElementById('download-container');
+            downloadContainer.style.display = 'none';
+
+            html2canvas(document.querySelector('.announcement'), {
+                backgroundColor: null,
+                scale: 2,
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                const squareCanvas = createSquareCanvas(canvas);
+
+                const link = document.createElement('a');
+                link.download = 'lesson_post_' + convertToJewishDate(new Date()) + '.png';
+                link.href = squareCanvas.toDataURL('image/png');
+                link.click();
+
+                setTimeout(() => {
+                    downloadContainer.style.display = 'flex';
+                }, 100);
+            });
+        }
+
+        function generateAndShareImage() {
+            const downloadContainer = document.getElementById('download-container');
+            downloadContainer.style.display = 'none';
+
+            html2canvas(document.querySelector('.announcement'), {
+                backgroundColor: null,
+                scale: 2,
+                logging: false,
+                useCORS: true
+            }).then(canvas => {
+                const squareCanvas = createSquareCanvas(canvas);
+
+                squareCanvas.toBlob(blob => {
+                    const lessonTitle = document.getElementById('lessonTitle').value || 'שיעור תורה';
+                    const teacherName = document.getElementById('teacherName').value || '';
+                    const parasha = document.getElementById('parasha').value || '';
+
+                    let shareText = `${lessonTitle}`;
+                    if (teacherName) shareText += ` - ${teacherName}`;
+                    if (parasha) shareText += ` | פרשת ${parasha}`;
+
+                    const shareData = {
+                        title: 'שיעור תורה',
+                        text: shareText,
+                        files: [new File([blob], 'lesson_post_' + convertToJewishDate(new Date()) + '.png', { type: 'image/png' })]
+                    };
+
+                    if (navigator.canShare && navigator.canShare(shareData)) {
+                        navigator.share(shareData).catch(err => {
+                            console.log('Error sharing:', err);
+                            fallbackShare(squareCanvas, shareText);
+                        });
+                    } else {
+                        fallbackShare(squareCanvas, shareText);
+                    }
+                }, 'image/png');
+
+                setTimeout(() => {
+                    downloadContainer.style.display = 'flex';
+                }, 100);
+            });
+        }
+
+        function createSquareCanvas(canvas) {
+            const squareCanvas = document.createElement('canvas');
+            const size = Math.max(canvas.width, canvas.height);
+            squareCanvas.width = size;
+            squareCanvas.height = size;
+            const ctx = squareCanvas.getContext('2d');
+
+            ctx.fillStyle = '#fff9e6';
+            ctx.fillRect(0, 0, size, size);
+
+            const xOffset = (size - canvas.width) / 2;
+            const yOffset = (size - canvas.height) / 2;
+
+            ctx.drawImage(canvas, xOffset, yOffset);
+
+            return squareCanvas;
+        }
+
+        function fallbackShare(canvas, shareText) {
+            // Copy share text to clipboard
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(shareText).then(() => {
+                    alert('הטקסט הועתק ללוח. התמונה תורד כעת - תוכל לשתף אותה ידנית.');
+                }).catch(() => {
+                    alert('התמונה תורד כעת. תוכל לשתף אותה ידנית.');
+                });
+            } else {
+                alert('התמונה תורד כעת. תוכל לשתף אותה ידנית.');
+            }
+
+            // Download the image as fallback
+            const link = document.createElement('a');
+            link.download = 'lesson_post_' + convertToJewishDate(new Date()) + '.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+
+        // Initialize preview
+        updatePreview();
+    </script>
+</body>
+</html>

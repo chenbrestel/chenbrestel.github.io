@@ -285,8 +285,8 @@
 
       // Create download link
       const link = document.createElement('a');
-      link.download = 'nasso_5785_' + '.png';
-<!--      link.download = 'nasso_5785_' + new Date().toLocaleDateString('he-IL').replace(/\//g, '-') + '.png';-->
+<!--      link.download = 'nasso_5785_' + '.png';-->
+      link.download = 'lesson_post_' + new Date().toLocaleDateString('he-IL').replace(/\//g, '-') + '.png';
       link.href = squareCanvas.toDataURL('image/png');
       link.click();
 

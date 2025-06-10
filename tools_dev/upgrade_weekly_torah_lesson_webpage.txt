@@ -1,0 +1,40 @@
+Upgrade the attached webpage.
+
+# Add input fields for the properties:
+
+bsd [default: the current value]
+src (in img tag) [default: the current value]
+synagogue-name-line1  [default: the current value]
+synagogue-name-line2  [default: the current value]
+lesson-title [default: empty]
+teacher-name [default: the current value]
+weekly [default: the current value]
+parasha [default: empty]
+question-1 [default: empty]
+question-2 [default: empty]
+question-3 [default: empty]
+invitation [default: the current value]
+time [default: the current value]
+
+# Add hebcal js library
+  <script src="https://unpkg.com/hebcal@2.5.0/dist/hebcal.min.js"></script>
+
+
+# Add the function
+   function convertToJewishDate(date = new Date()) {
+      const hdate = new Hebcal.HDate(date);
+      const jewishYear = hdate.getFullYear();
+      const jewishMonth = hdate.getMonthName();
+      const jewishDay = hdate.getDate();
+      return `${jewishYear}_${jewishMonth}_${jewishDay}`;
+    }
+
+
+# Update output file name
+Replace
+link.download = 'lesson_post_' + new Date().toLocaleDateString('he-IL').replace(/\//g, '-') + '.png';
+by
+link.download = 'lesson_post_' + convertToJewishDate(new Date()) + '.png';
+
+# Add share button
+to share the resulting png image
