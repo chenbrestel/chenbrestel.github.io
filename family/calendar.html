@@ -1,0 +1,604 @@
+<!--
+https://chenbrestel.github.io/science/job_hunt
+https://chenbrestel.github.io/science/jobs/job_hunt.html
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108048997-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-108048997-1');
+    </script>
+
+    <title>🎯 חיפוש משרה Job Hunt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap"
+          rel="stylesheet">
+    <style>
+        /* General Body Styling */
+        body {
+          font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+          line-height: 1.6;
+          margin: 0;
+          padding: 0;
+          color: #333;
+        }
+
+        a {
+          color: #1772d0;
+          target: _blank;
+          text-decoration: none;
+        }
+
+        a:hover {
+          color: #f09228;
+        }
+
+        /* Layout Container */
+        .container {
+          max-width: 800px;
+          margin: auto;
+          padding: 20px;
+        }
+
+        /* Profile Section Styling */
+        .profile-section {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          align-items: center;
+          /* margin-bottom: 40px; */
+        }
+
+        .profile-text {
+          flex: 1 1 60%;
+          padding: 20px;
+        }
+
+        h1 {
+          font-weight: normal;
+          text-align: center;
+        }
+
+        .profile-text h1 {
+          font-size: 2rem;
+          /* margin-bottom: 10px; */
+          font-weight: normal;
+        }
+
+        .profile-text p {
+          margin: 10px 0;
+        }
+
+        .profile-image {
+          flex: 1 1 30%;
+          text-align: center;
+        }
+
+        .profile-image img {
+          max-width: 200px;
+          border-radius: 5%;
+        }
+
+        /* Social Links */
+        .social-links {
+          text-align: center;
+          margin: 20px 0;
+        }
+
+        .social-links a {
+          margin: 0 10px;
+        }
+
+        /* Section Styling */
+        .section {
+          margin-bottom: 40px;
+        }
+
+        .section-heading {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          /* font-weight: bold; */
+        }
+
+        /* List Styling */
+        ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        /* Publications Section */
+        .publication {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          padding: 10px;
+          overflow: hidden; /* Ensures child elements stay within the border */
+        }
+
+        .publication-media {
+          flex: 1 1 35%; /* Allocates 35% of the space for media */
+          position: relative;
+          width: 100%;
+          aspect-ratio: 4 / 1; /* Ensures a square layout */
+          overflow: hidden;
+          border-radius: 8px;
+        }
+
+        .publication-media img,
+        .publication-media video {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain; /* Ensures the image or video fills the container */
+          transition: opacity 0.3s ease-in-out;
+        }
+
+        .publication-media .one {
+          border-radius: 15px;
+          overflow: hidden;
+          object-fit: cover; /* or 'contain' depending on your needs */
+          opacity: 1; /* Show the "before" image by default */
+          z-index: 1; /* Ensure it is on top */
+        }
+
+        .publication-media .two {
+          border-radius: 15px;
+          opacity: 0; /* Hide the "after" image by default */
+          z-index: 2; /* Stack it above the "before" image */
+        }
+
+        .publication-media:hover .one {
+          opacity: 0; /* Hide the "before" image on hover */
+        }
+
+        .publication-media:hover .two {
+          opacity: 1; /* Show the "after" image on hover */
+        }
+
+
+        .publication-details {
+          flex: 1 1 60%;
+        }
+
+        .publication-details p {
+          margin: 10px 0;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+          .profile-section {
+            flex-direction: column;
+            align-items: center;
+          }
+
+          /* .profile-text {
+            text-align: center;
+          } */
+
+          .publication {
+            flex-direction: column;
+          }
+
+          .publication-media {
+            flex: 1 1 100%;
+          }
+
+          .publication-details {
+            flex: 1 1 100%;
+          }
+        }
+
+        .news-section {
+          margin-bottom: 40px;
+        }
+
+        .news-list {
+          list-style-type: disc;
+          margin: 0;
+          padding-left: 20px;
+        }
+
+        .news-list li {
+          /* margin-bottom: 10px; */
+          line-height: 1.6;
+        }
+
+        .news-list a {
+          color: #1772d0;
+          text-decoration: none;
+        }
+
+        .news-list a:hover {
+          color: #f09228;
+        }
+        .researchers-section {
+          margin-bottom: 40px;
+        }
+
+        .researchers-list {
+          list-style-type: none;
+          padding: 0;
+          margin: 0;
+        }
+
+        .researchers-list li {
+          margin-bottom: 10px;
+        }
+
+        .researchers-list a {
+          color: #1772d0;
+          text-decoration: none;
+          font-weight: bold;
+        }
+
+        .researchers-list a:hover {
+          color: #f09228;
+        }
+        .researchers-section {
+          margin-bottom: 40px;
+          padding: 20px;
+          background-color: #f9f9f9;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+        }
+        /* Patents Section */
+        .patents-section {
+          margin-bottom: 40px;
+        }
+
+        .section-heading {
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+          font-weight: bold;
+        }
+
+        .patents-list {
+          list-style-type: disc;
+          padding-left: 20px;
+          margin: 0;
+        }
+
+        .patents-list li {
+          margin-bottom: 10px;
+          font-size: 1rem;
+          line-height: 1.5;
+        }
+        .publication {
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .publication:hover {
+          transform: scale(1.02); /* Slight zoom on hover */
+          box-shadow: 0 0 15px; /* Intensify glow on hover */
+        }
+        .coming-soon .coming-soon-badge {
+          display: inline-block;
+          background-color: #f09228;
+          color: white;
+          padding: 2px 8px;
+          font-size: 0.9rem;
+          font-weight: bold;
+          border-radius: 12px;
+          margin-top: 5px;
+        }
+        .coming-soon img {
+          opacity: 0.5; /* Optional: Make the placeholder image look subdued */
+        }
+
+            .share-button {
+      display: inline-block;
+      padding: 8px 16px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .share-button:hover {
+      background-color: #3367d6;
+    }
+
+
+    </style>
+
+    <!-- Open Graph Meta Tags for WhatsApp -->
+    <meta property="og:title" content="🎯 חיפוש משרה Dr. Chen Brestel | Job Hunt ">
+    <meta property="og:description"
+          content="">
+    <meta property="og:image"
+          content="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXhqN2V1aWNrMzJpYnJsN3pnYjV2NHN5cG80amxyMDljenJ6djRobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RiykPw9tgdOylwFgUe/giphy.gif">
+    <meta property="og:url"
+          content="https://chenbrestel.github.io/science/job_hunt">
+    <meta property="og:type" content="website">
+
+</head>
+
+<body>
+<div class="container">
+    <!-- Profile Section -->
+
+    <header>
+        <div class="header">
+            <p align="left">Bs"d</p>
+            <h1>🎯 חיפוש משרה Job Hunt</h1>
+            <div style="width: 80%;   margin: 0 auto;">
+                <p style="text-align: justify; "></p>
+                <div style="text-align: center; ">
+                    <button class="share-button" onclick="shareContent(this)" style="border: 2px solid navy;">Share this
+                        page
+                    </button>
+                    <br>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+
+    <div class="profile-section">
+        <div class="profile-image">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZXhqN2V1aWNrMzJpYnJsN3pnYjV2NHN5cG80amxyMDljenJ6djRobiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RiykPw9tgdOylwFgUe/giphy.gif"
+                 alt="">
+        </div>
+
+        <div class="profile-text">
+            <!--            <p>-->
+            <!--                Protein engineering is a fascinating field that combines biology, chemistry, and computational tools to-->
+            <!--                design and create new proteins with specific functions. This field has applications in medicine,-->
+            <!--                industry, and environmental science.-->
+            <!--            </p>-->
+        </div>
+    </div>
+
+    <!--    <div class="section applications">-->
+    <!--        <h2 class="section-heading">Resources</h2>-->
+    <!--        <ul class="news-list">-->
+    <!--            <li>Development of therapeutic proteins for treating diseases.</li>-->
+    <!--            <li>Design of enzymes for industrial processes.</li>-->
+    <!--            <li>Creation of biosensors for environmental monitoring.</li>-->
+    <!--            <li>Energy production industry: Engineering proteins for biofuel production and energy storage.</li>-->
+    <!--            <li>Military and HLS (Homeland Security): Developing proteins for biodefense and detection of hazardous-->
+    <!--                materials.-->
+    <!--            </li>-->
+    <!--            <li>etc.</li>-->
+    <!--        </ul>-->
+    <!--    </div>-->
+
+
+    <!-- Publications Section -->
+    <section class="section">
+        <div class="section-heading">Resources</div>
+
+        <!-- secrethunter -->
+        <div class="publication highlighted" id="secrethunter">
+            <div class="publication-media">
+                <img src="images/secrethunter.png" class="one" alt="Before Image"/>
+                <img src="images/secrethunter.png" class="two" alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="https://secrethunter.io/" target="_blank"><strong>SecretHunter</strong></a></p>
+                <p>A platform developed
+                    by <a href="https://www.linkedin.com/in/yaniv-beaudoin/">Yaniv Beaudoin</a>. This is
+                    a great tool to explore new opportunities. It is an AI-powered platform that give you access to
+                    the most recent jobs in thousands of companies. It
+                    has a very efficient and convenient UI to enable you an efficient job hunt tailored to you.
+                    <br>
+                </p>
+                <!--                <p>#protein_language #protein_engineering #science #paper #pnas #5784 #2024</p>-->
+            </div>
+        </div>
+
+        <!-- meds_jobs -->
+        <div class="publication highlighted" id="meds_jobs">
+            <div class="publication-media">
+                <img src="images/meds_jobs.png" class="one" alt="Before Image"/>
+                <img src="images/meds_jobs.png" class="two" alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="  https://chat.whatsapp.com/E2p4JAQc43wF0myjrqR7Im
+" target="_blank"><strong>MEDS Jobs</strong></a><br>
+                </p>
+                <p>A whatsapp group led by the cool and active active community <a
+                        href="https://chenbrestel.github.io/science/protein_engineering/protein_engineering.html#meds_community_channels"
+                        target="_blank">Medical
+                    Data Science Israel (MeDS)</a>. This is great place to explore new challenges in the exciting field
+                    of biomedicine. </p>
+                <!--                <p>#protein_language #protein_engineering #science #paper #pnas #5784 #2024</p>-->
+            </div>
+        </div>
+
+        <!-- meds_jobs -->
+        <div class="publication highlighted" id="ai_jobs_yaarit">
+            <div class="publication-media">
+                <img src="images/ai_jobs_yaarit.png" class="one" alt="Before Image"/>
+                <img src="images/ai_jobs_yaarit.png" class="two" alt="Before Image"/>
+            </div>
+            <div class="publication-details">
+
+                <p>
+                    <a href="  https://chat.whatsapp.com/CPBZ7KRCzpf4Vt8uWyu9Ir
+" target="_blank"><strong>AI/ML/DL Jobs</strong></a><br>
+                </p>
+                <p>A whatsapp group led by the professional HR <a
+                        href="https://www.linkedin.com/in/yaarit-rosentzvig-soussan/?originalSubdomain=il">Yaarit
+                    Rosentzvig</a>. This is great place to explore new challenges in the exciting field of AI/ML/DL.
+                </p>
+                <!--                <p>#protein_language #protein_engineering #science #paper #pnas #5784 #2024</p>-->
+            </div>
+        </div>
+
+    </section>
+
+
+    <!-- section Footer-->
+    <section class="section">
+        <div class="section researchers-section" align="center">
+            <p>Thanks to <a href="https://www.amirbar.net/" target="_blank">Amir Bar</a> for the page template </p>
+            <p>&copy; 5785 2025 Chen Brestel. All rights reserved.</p>
+            <p>Welcome to follow on social media</p>
+            <iframe src="https://bio.link/chenbrestel" height="400"></iframe>
+        </div>
+
+    </section>
+
+</div>
+
+
+<script>
+    document.querySelectorAll('.publication-media video').forEach(video => {
+    video.addEventListener('mouseenter', () => {
+      video.play();
+    });
+
+    video.addEventListener('mouseleave', () => {
+      video.pause();
+      video.currentTime = 0; // Reset to the first frame
+    });
+  });
+
+
+</script>
+
+<script>
+
+    // Function to add share buttons to all content sections
+function addShareButtons() {
+ const contentSections = document.querySelectorAll('.publication-details');
+
+ contentSections.forEach(section => {
+   // Create a share button
+   const shareButton = document.createElement('button');
+   shareButton.className = 'share-button';
+   shareButton.textContent = 'Share';
+
+   // Customize button text based on section ID
+   const sectionId = section.id;
+   if (sectionId.startsWith('article')) {
+     shareButton.textContent = 'Share This Article';
+   } else if (sectionId.startsWith('tutorial')) {
+     shareButton.textContent = 'Share This Tutorial';
+   }
+
+   // Add click event
+   shareButton.addEventListener('click', function() {
+     shareContent(this);
+   });
+
+   // Append the button to the section
+   section.appendChild(shareButton);
+ });
+}
+
+function convertToSingleLine(input) {
+  return input.replace(/\s+/g, ' ').trim();
+}
+
+function shareContent(button) {
+ // Get the grand-parent div (content section)
+ let contentSection;
+  contentSection = button.closest('.publication');
+
+  let contentId, contentTitle;
+ if (contentSection) {
+ // Get the ID of the content section
+  contentId = contentSection.id;
+
+ // Get the title from the h2 element within the content section
+  contentTitle = contentSection.querySelector('a').textContent;
+ } else {
+     contentSection = button.closest('.header');
+ contentId = "";
+ contentTitle =  contentSection.querySelector('h1').textContent;
+
+ }
+
+contentTitle = convertToSingleLine(contentTitle)
+
+ // Create a custom URL with the content ID as a parameter
+ const shareUrl = window.location.origin + window.location.pathname + '#' + contentId;
+
+ // Prepare custom share text based on the content ID
+ let shareText;
+
+ if (contentId.startsWith('article')) {
+   shareText = 'Check out this article: ' + contentTitle;
+ } else if (contentId.startsWith('tutorial')) {
+   shareText = 'I found this helpful tutorial: ' + contentTitle;
+ } else {
+   shareText = 'Check this out: ' + contentTitle;
+ }
+
+ // Try to use the Web Share API
+ if (navigator.share) {
+   navigator.share({
+     title: contentTitle,
+     text: shareText,
+     url: shareUrl
+   })
+   .then(() => console.log('Share successful'))
+   .catch((error) => console.log('Error sharing:', error));
+ } else {
+   // Fallback for browsers that don't support the Web Share API
+   // Create custom share links
+   const shareLinks = {
+     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`,
+     twitter: `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareText)}`,
+     linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(contentTitle)}`,
+     email: `mailto:?subject=${encodeURIComponent(contentTitle)}&body=${encodeURIComponent(shareText + '\n\n' + shareUrl)}`
+   };
+
+   // Create a simple modal with share options
+   const modal = document.createElement('div');
+   modal.style.position = 'fixed';
+   modal.style.top = '50%';
+   modal.style.left = '50%';
+   modal.style.transform = 'translate(-50%, -50%)';
+   modal.style.backgroundColor = 'white';
+   modal.style.padding = '20px';
+   modal.style.borderRadius = '5px';
+   modal.style.boxShadow = '0 4px 8px rgba(0,0,0,0.2)';
+   modal.style.zIndex = '1000';
+
+   modal.innerHTML = `
+     <h3>Share: ${contentTitle}</h3>
+     <p><a href="${shareLinks.facebook}" target="_blank">Share on Facebook</a></p>
+     <p><a href="${shareLinks.twitter}" target="_blank">Share on Twitter</a></p>
+     <p><a href="${shareLinks.linkedin}" target="_blank">Share on LinkedIn</a></p>
+     <p><a href="${shareLinks.email}">Share via Email</a></p>
+     <button onclick="this.parentNode.remove()">Close</button>
+   `;
+
+   document.body.appendChild(modal);
+ }
+}
+
+    // Run the function when the page loads
+document.addEventListener('DOMContentLoaded', addShareButtons);
+
+</script>
+
+
+</body>
+
+</html>
