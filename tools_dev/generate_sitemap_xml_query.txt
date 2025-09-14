@@ -1,0 +1,5 @@
+
+Please provide a sitemap.xml for my site. It includes the following pages:
+https://chenbrestel.github.io
+https://chenbrestel.github.io/science/job_hunt
+https://chenbrestel.github.io/science/protein_engineering
