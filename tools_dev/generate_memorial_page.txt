@@ -1,0 +1,16 @@
+Generate an html page wherein the following page is embedded.
+https://www.izkor.gov.il/%D7%99%D7%95%D7%91%D7%9C%20%D7%94%D7%9C%D7%99%D7%91%D7%A0%D7%99/en_cbd014129e581682423b8f11ec504599
+
+Only the following content is shown:
+סרן
+יובל הליבני
+בן נירית וארז
+
+חיל רגלים
+נפל ביום כ"ד בתשרי תשפ"ד (09.10.2023)
+בן 30 בנופלו
+מקום מנוחתו בית העלמין גדרות (חלקה צבאית)
+
+On hover, additional parts of the embedded page are shown.
+
+On click, a new tab is opened with the embedded page.
