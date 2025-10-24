@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Live Snapshot on Hover</title>
+<style>
+  .snapshot-container {
+    position: relative;
+    display: inline-block;
+  }
+  .hover-frame {
+    display: none;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    width: 400px;
+    height: 300px;
+    z-index: 10;
+    border: 1px solid #888;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    background-color: #fff;
+  }
+  .snapshot-container:hover .hover-frame {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="snapshot-container">
+  <a href="https://www.google.com/search?q=#ליפא_גינת" target="_blank">Hover for live preview</a>
+  <iframe class="hover-frame" src="https://www.google.com/search?q=#ליפא_גינת"></iframe>
+</div>
+
+</body>
+</html>
