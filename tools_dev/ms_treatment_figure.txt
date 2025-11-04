@@ -1,0 +1,24 @@
+# ms_treatment_figure.txt
+Prepare a chart showing multiple sclerosis treatment approaches.
+html format
+Aimed for investor deck
+
+
+# Disease-Modifying Therapies (DMTs): reduce relapse risk and slow disease progression
+## Immunomodulators
+## Immunosuppressants
+## S1P receptor modulators
+## Monoclonal antibodies
+
+# Novel DMT's
+## Hematopoietic Stem Cell Transplantation (HSCT)
+## Chimeric Antigen Receptor T (CAR-T) Cells
+
+# Treatments for Active Relapses
+
+# Symptom Management Drugs
+## Muscle relaxers
+## Fatigue treatments
+## Pain medications
+## Bladder control drugs
+## Antidepressants and other symptomatic medications

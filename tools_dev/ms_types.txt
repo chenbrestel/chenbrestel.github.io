@@ -1,0 +1,9 @@
+Prepare a pie chart
+Put the legend items near the their pieces in the pie chart
+html format
+investor deck
+
+"Relapsing-Remitting MS (RRMS)"	77.5
+"Secondary Progressive MS (SPMS)"	7.5
+"Primary Progressive MS (PPMS)"	12.5
+"Progressive Relapsing MS (PRMS)"	2.5

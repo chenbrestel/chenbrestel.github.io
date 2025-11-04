@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Types Distribution</title>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Play', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2em;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+        }
+
+        .legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f7fafc;
+            border-radius: 8px;
+            transition: transform 0.2s;
+        }
+
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .legend-color {
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .legend-text {
+            flex: 1;
+        }
+
+        .legend-label {
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 0.9em;
+            margin-bottom: 2px;
+        }
+
+        .legend-value {
+            color: #718096;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multiple Sclerosis Types Distribution</h1>
+        <p class="subtitle">Prevalence by MS Subtype</p>
+
+        <div class="chart-wrapper">
+            <canvas id="msChart"></canvas>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4299e1;"></div>
+                <div class="legend-text">
+                    <div class="legend-label">RRMS <br> Relapsing-Remitting MS</div>
+                    <div class="legend-value">77.5%</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #48bb78;"></div>
+                <div class="legend-text">
+                    <div class="legend-label">PPMS <br> Primary Progressive MS</div>
+                    <div class="legend-value">12.5%</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ed8936;"></div>
+                <div class="legend-text">
+                    <div class="legend-label">SPMS <br> Secondary Progressive MS</div>
+                    <div class="legend-value">7.5%</div>
+                </div>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f56565;"></div>
+                <div class="legend-text">
+                    <div class="legend-label">PRMS <br> Progressive Relapsing MS</div>
+                    <div class="legend-value">2.5%</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('msChart').getContext('2d');
+
+        Chart.defaults.font.family = "'Play', sans-serif";
+
+        const data = {
+            labels: [
+                'Relapsing-Remitting MS (RRMS)',
+                'Primary Progressive MS (PPMS)',
+                'Secondary Progressive MS (SPMS)',
+                'Progressive Relapsing MS (PRMS)'
+            ],
+            datasets: [{
+                data: [77.5, 12.5, 7.5, 2.5],
+                backgroundColor: [
+                    '#4299e1',
+                    '#48bb78',
+                    '#ed8936',
+                    '#f56565'
+                ],
+                borderColor: '#ffffff',
+                borderWidth: 3
+            }]
+        };
+
+        const config = {
+            type: 'doughnut',
+            data: data,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    tooltip: {
+                        backgroundColor: '#2d3748',
+                        titleFont: {
+                            family: "'Play', sans-serif",
+                            size: 14,
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            family: "'Play', sans-serif",
+                            size: 16,
+                            weight: 'bold'
+                        },
+                        padding: 12,
+                        cornerRadius: 8,
+                        callbacks: {
+                            label: function(context) {
+                                return context.parsed + '%';
+                            }
+                        }
+                    }
+                },
+                cutout: '65%',
+                animation: {
+                    animateRotate: true,
+                    animateScale: true,
+                    duration: 1500,
+                    easing: 'easeInOutQuart'
+                }
+            }
+        };
+
+        new Chart(ctx, config);
+    </script>
+</body>
+</html>

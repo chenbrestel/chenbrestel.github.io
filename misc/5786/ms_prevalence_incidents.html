@@ -1,0 +1,298 @@
+<!--
+ms_prevalence_incidents.html
+
+Query:
+Generate a chart or two charts showing Multiple Sclerosis (MS) prevalence and incidents in US
+--
+year        prevalence
+1993        257494.2577
+2003        349141.4074
+2013        408011.1872
+2023        457313.4796
+--
+year        incidents
+1993	8657.84669
+2003	9945.658034
+2013	10898.42496
+2023	11750.36057
+--
+Font: Play
+Format: pptx or html
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Sclerosis in the United States</title>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Play', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            text-align: center;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+
+        .charts-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .chart-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .chart-container:hover {
+            transform: translateY(-5px);
+        }
+
+        .chart-title {
+            font-size: 1.5em;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .stats {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .stat-box {
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            color: white;
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 968px) {
+            .charts-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>בס"ד</h1>
+        <h1>Multiple Sclerosis in the United States</h1>
+        <div class="subtitle">Prevalence and Incidence Trends (1993-2023)</div>
+
+        <div class="charts-wrapper">
+            <div class="chart-container">
+                <div class="chart-title">MS Prevalence</div>
+                <canvas id="prevalenceChart"></canvas>
+            </div>
+
+            <div class="chart-container">
+                <div class="chart-title">MS Incidence</div>
+                <canvas id="incidenceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="chart-title">Key Statistics (30-Year Change)</div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value">+77.6%</div>
+                    <div class="stat-label">Prevalence Increase</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">+35.7%</div>
+                    <div class="stat-label">Incidence Increase</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">457,313</div>
+                    <div class="stat-label">2023 Prevalence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">11,750</div>
+                    <div class="stat-label">2023 Incidence</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">+30%</div>
+                    <div class="stat-label">Total Population Increase</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const prevalenceData = [
+            { year: 1993, value: 257494.2577 },
+            { year: 2003, value: 349141.4074 },
+            { year: 2013, value: 408011.1872 },
+            { year: 2023, value: 457313.4796 }
+        ];
+
+        const incidenceData = [
+            { year: 1993, value: 8657.84669 },
+            { year: 2003, value: 9945.658034 },
+            { year: 2013, value: 10898.42496 },
+            { year: 2023, value: 11750.36057 }
+        ];
+
+        const chartOptions = {
+            responsive: true,
+            maintainAspectRatio: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.8)',
+                    padding: 12,
+                    titleFont: {
+                        family: 'Play',
+                        size: 14
+                    },
+                    bodyFont: {
+                        family: 'Play',
+                        size: 13
+                    },
+                    callbacks: {
+                        label: function(context) {
+                            return context.parsed.y.toLocaleString('en-US', {maximumFractionDigits: 0});
+                        }
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    ticks: {
+                        font: {
+                            family: 'Play'
+                        },
+                        callback: function(value) {
+                            return value.toLocaleString('en-US', {maximumFractionDigits: 0});
+                        }
+                    }
+                },
+                x: {
+                    ticks: {
+                        font: {
+                            family: 'Play'
+                        }
+                    }
+                }
+            }
+        };
+
+        // Prevalence Chart
+        const prevCtx = document.getElementById('prevalenceChart').getContext('2d');
+        new Chart(prevCtx, {
+            type: 'line',
+            data: {
+                labels: prevalenceData.map(d => d.year),
+                datasets: [{
+                    label: 'Prevalence',
+                    data: prevalenceData.map(d => d.value),
+                    borderColor: '#667eea',
+                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    pointBackgroundColor: '#667eea',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: chartOptions
+        });
+
+        // Incidence Chart
+        const incCtx = document.getElementById('incidenceChart').getContext('2d');
+        new Chart(incCtx, {
+            type: 'line',
+            data: {
+                labels: incidenceData.map(d => d.year),
+                datasets: [{
+                    label: 'Incidence',
+                    data: incidenceData.map(d => d.value),
+                    borderColor: '#764ba2',
+                    backgroundColor: 'rgba(118, 75, 162, 0.1)',
+                    borderWidth: 3,
+                    fill: true,
+                    tension: 0.4,
+                    pointRadius: 6,
+                    pointHoverRadius: 8,
+                    pointBackgroundColor: '#764ba2',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2
+                }]
+            },
+            options: chartOptions
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+# ms_early_he_dmt.txt
+Prepare a slide
+Title: The significance of tailoring a drug to MS in the early stage
+Sub-title: Benefits of early high efficacy DMTs vs. delayed treatment or escalation strategies.
+
+Google slide format
+Aimed for investor deck
+Use Play font
+
+Delay:
+Irreversible CNS damage
+Disability progression
+
+Significantly reduces:
+Inflammatory activity
+Clinical relapses
+New lesion formation on MRI
+Long-term neurodegeneration

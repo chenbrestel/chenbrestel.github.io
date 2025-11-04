@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Early Treatment Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Play', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            width: 960px;
+            height: 540px;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 50px 60px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .subtitle {
+            color: #64748b;
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            flex: 1;
+        }
+
+        .column {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid;
+        }
+
+        .risks .column-title {
+            color: #dc2626;
+            border-bottom-color: #dc2626;
+        }
+
+        .benefits .column-title {
+            color: #16a34a;
+            border-bottom-color: #16a34a;
+        }
+
+        .items {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .icon {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 2px;
+        }
+
+        .risks .icon {
+            background: #fecaca;
+            color: #dc2626;
+        }
+
+        .benefits .icon {
+            background: #bbf7d0;
+            color: #16a34a;
+        }
+
+        .item-text {
+            flex: 1;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #334155;
+        }
+
+        .footer {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 2px solid #e2e8f0;
+            text-align: center;
+            color: #1e3a8a;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <div class="header">
+            <h1>The Significance of Tailoring a Drug to MS in the Early Stage</h1>
+            <div class="subtitle">Benefits of Early High-Efficacy DMTs vs. Delayed Treatment or Escalation Strategies</div>
+        </div>
+
+        <div class="content">
+            <div class="column risks">
+                <div class="column-title">Risks of Delayed Treatment</div>
+                <div class="items">
+                    <div class="item">
+                        <div class="icon">!</div>
+                        <div class="item-text">Irreversible CNS damage</div>
+                    </div>
+                    <div class="item">
+                        <div class="icon">!</div>
+                        <div class="item-text">Disability progression</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column benefits">
+                <div class="column-title">Early High-Efficacy DMT Benefits</div>
+                <div class="items">
+                    <div class="item">
+                        <div class="icon">✓</div>
+                        <div class="item-text">Significantly reduces inflammatory activity</div>
+                    </div>
+                    <div class="item">
+                        <div class="icon">✓</div>
+                        <div class="item-text">Reduces clinical relapses</div>
+                    </div>
+                    <div class="item">
+                        <div class="icon">✓</div>
+                        <div class="item-text">Prevents new lesion formation on MRI</div>
+                    </div>
+                    <div class="item">
+                        <div class="icon">✓</div>
+                        <div class="item-text">Limits long-term neurodegeneration</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Early Intervention = Better Long-Term Outcomes
+        </div>
+    </div>
+</body>
+</html>

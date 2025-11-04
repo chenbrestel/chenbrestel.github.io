@@ -1,0 +1,304 @@
+<!--
+
+
+convert ms_treatment.png -alpha set \
+  \( -size 1427x613 xc:none -draw "roundrectangle 0,0,1427,613,15,15" \) \
+  -compose DstIn -composite ms_treatment_.png
+
+
+magick ms_treatment.png \( +clone -alpha extract -draw "fill black polygon 0,0 0,15 15,0 fill white circle 15,15 15,0" \
+   \( +clone -flip \) -compose Multiply -composite \
+   \( +clone -flop \) -compose Multiply -composite \) \
+-alpha off -compose CopyOpacity -composite ms_treatment_.png
+
+magick ms_treatment.png ( +clone -alpha extract -draw "fill black polygon 0,0 0,15 15,0 fill white circle 15,15 15,0"    ( +clone -flip ) -compose Multiply -composite    ( +clone -flop ) -compose Multiply -composite ) -alpha off -compose CopyOpacity -composite ms_treatment_.png
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS Treatment Landscape</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2d3748;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            font-size: 1.1em;
+            margin-bottom: 50px;
+        }
+
+        .treatment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(20px, 1fr));
+            gap: 30px;
+            margin-top: 0px;
+        }
+
+        .treatment-card {
+            background: linear-gradient(135deg, #f6f8fb 0%, #ffffff 100%);
+            border-radius: 15px;
+            padding: 30px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .treatment-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .treatment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .treatment-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .dmt .icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .novel .icon {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .relapse .icon {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        .symptom .icon {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.4em;
+            color: #2d3748;
+            font-weight: 700;
+            flex: 1;
+        }
+
+        .card-description {
+            color: #4a5568;
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .subcategory {
+            background: white;
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-left: 3px solid #cbd5e0;
+            transition: all 0.2s ease;
+        }
+
+        .subcategory:hover {
+            border-left-color: #667eea;
+            background: #f7fafc;
+        }
+
+        .subcategory-title {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1em;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 600;
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .novel .badge {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .treatment-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<!--        <h1>Multiple Sclerosis Treatment Landscape</h1>-->
+<!--        <p class="subtitle">Comprehensive overview of therapeutic approaches for investor consideration</p>-->
+
+        <div class="treatment-grid">
+            <!-- Disease-Modifying Therapies -->
+            <div class="treatment-card dmt">
+                <div class="card-header">
+                    <div class="icon">DMT</div>
+                    <div class="card-title">Disease-Modifying Therapies</div>
+                </div>
+                <div class="card-description">
+                    Reduce relapse risk and slow disease progression
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Immunomodulators</div>
+<!--                    <span class="badge">Core DMT</span>-->
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Immunosuppressants</div>
+<!--                    <span class="badge">Core DMT</span>-->
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">S1P Receptor Modulators</div>
+<!--                    <span class="badge">Core DMT</span>-->
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Monoclonal Antibodies</div>
+<!--                    <span class="badge">Core DMT</span>-->
+                </div>
+            </div>
+
+            <!-- Novel DMTs -->
+            <div class="treatment-card novel">
+                <div class="card-header">
+                    <div class="icon">★</div>
+                    <div class="card-title">Novel DMTs</div>
+                </div>
+                <div class="card-description">
+                    Emerging therapeutic approaches with transformative potential
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Hematopoietic Stem Cell Transplantation (HSCT)</div>
+<!--                    <span class="badge">Innovative</span>-->
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Chimeric Antigen Receptor T (CAR-T) Cells</div>
+<!--                    <span class="badge">Innovative</span>-->
+                </div>
+            </div>
+
+            <!-- Active Relapses -->
+            <div class="treatment-card relapse">
+                <div class="card-header">
+                    <div class="icon">⚡</div>
+                    <div class="card-title">Active Relapse Treatment</div>
+                </div>
+                <div class="card-description">
+                    Acute interventions to manage disease exacerbations
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Corticosteroid Therapy</div>
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Plasma Exchange (Plasmapheresis)</div>
+                </div>
+            </div>
+
+            <!-- Symptom Management -->
+            <div class="treatment-card symptom">
+                <div class="card-header">
+                    <div class="icon">+</div>
+                    <div class="card-title">Symptom Management</div>
+                </div>
+                <div class="card-description">
+                    Supportive therapies to improve quality of life
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Muscle Relaxers</div>
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Fatigue Treatments</div>
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Pain Medications</div>
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Bladder Control Drugs</div>
+                </div>
+                <div class="subcategory">
+                    <div class="subcategory-title">Antidepressants & Symptomatic Medications</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
