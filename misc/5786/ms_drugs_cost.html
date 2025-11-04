@@ -1,0 +1,181 @@
+<!--ms_drugs_cost.html-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cost of MS Drugs per Patient in US</title>
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Play', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .slide {
+            background: white;
+            width: 100%;
+            max-width: 1200px;
+            aspect-ratio: 16/9;
+            padding: 60px 80px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 50px;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        .cost-highlights {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 30px 40px;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .cost-item {
+            margin-bottom: 20px;
+        }
+
+        .cost-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .cost-label {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            opacity: 0.95;
+        }
+
+        .cost-value {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .additional-info {
+            flex: 1;
+        }
+
+        .info-header {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 20px;
+        }
+
+        .cost-category {
+            margin-bottom: 18px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .cost-category::before {
+            content: "●";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 20px;
+        }
+
+        .category-title {
+            font-weight: 700;
+            color: #4a5568;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .category-details {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 40px 50px;
+            }
+
+            h1 {
+                font-size: 36px;
+                margin-bottom: 35px;
+            }
+
+            .cost-value {
+                font-size: 28px;
+            }
+
+            .cost-label {
+                font-size: 18px;
+            }
+
+            .info-header {
+                font-size: 20px;
+            }
+
+            .category-title {
+                font-size: 16px;
+            }
+
+            .category-details {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slide">
+        <h1>Cost of MS Drugs per Patient in US</h1>
+
+        <div class="cost-highlights">
+            <div class="cost-item">
+                <div class="cost-label">10 years</div>
+                <div class="cost-value">$600,000 to $900,000</div>
+            </div>
+            <div class="cost-item">
+                <div class="cost-label">Annual costs of disease-modifying therapies (DMTs)</div>
+                <div class="cost-value">$57,000 to $93,000</div>
+            </div>
+        </div>
+
+        <div class="additional-info">
+            <div class="info-header">The actual cost of treatment is higher</div>
+
+            <div class="cost-category">
+                <div class="category-title">Direct medical costs:</div>
+                <div class="category-details">hospital stays, diagnostic tests (MRI, EEG, EMG), medications, surgeries, outpatient consultations, physiotherapy, and rehabilitation.</div>
+            </div>
+
+            <div class="cost-category">
+                <div class="category-title">Direct non-medical costs:</div>
+                <div class="category-details">transportation to healthcare facilities, home care equipment, dietary needs, and caregiver support.</div>
+            </div>
+
+            <div class="cost-category">
+                <div class="category-title">Additional ongoing costs for chronic conditions:</div>
+                <div class="category-details">long-term medication etc.</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
