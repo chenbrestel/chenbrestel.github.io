@@ -1,0 +1,276 @@
+/* General Body Styling */
+body {
+  font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+a {
+  color: #1772d0;
+  target: _blank;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #f09228;
+}
+
+/* Layout Container */
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Profile Section Styling */
+.profile-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-text {
+  flex: 1 1 60%;
+  padding: 20px;
+}
+
+h1 {
+  font-weight: normal;
+  text-align: center;
+}
+
+.profile-text h1 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.profile-text p {
+  margin: 10px 0;
+  text-align: justify;
+}
+
+.profile-image {
+  flex: 1 1 30%;
+  text-align: center;
+}
+
+.profile-image img {
+  max-width: 200px;
+  border-radius: 5%;
+}
+
+/* Social Links */
+.social-links {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.social-links a {
+  margin: 0 10px;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 40px;
+}
+
+.section-heading {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* List Styling */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+/* Publications Section */
+.publication {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.publication:hover {
+  transform: scale(1.02);
+  box-shadow: 0 0 15px;
+}
+
+.publication-media {
+  flex: 1 1 35%;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.publication-media img,
+.publication-media video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.publication-media .one {
+  opacity: 1;
+  z-index: 1;
+}
+
+.publication-media .two {
+  opacity: 0;
+  z-index: 2;
+}
+
+.publication-media:hover .one {
+  opacity: 0;
+}
+
+.publication-media:hover .two {
+  opacity: 1;
+}
+
+.publication-details {
+  flex: 1 1 60%;
+}
+
+.publication-details p {
+  margin: 10px 0;
+}
+
+/* News Section */
+.news-section {
+  margin-bottom: 40px;
+}
+
+.news-list {
+  list-style-type: disc;
+  margin: 0;
+  padding-left: 20px;
+}
+
+.news-list li {
+  line-height: 1.6;
+}
+
+.news-list a {
+  color: #1772d0;
+  text-decoration: none;
+}
+
+.news-list a:hover {
+  color: #f09228;
+}
+
+/* Researchers Section */
+.researchers-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.researchers-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.researchers-list li {
+  margin-bottom: 10px;
+}
+
+.researchers-list a {
+  color: #1772d0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.researchers-list a:hover {
+  color: #f09228;
+}
+
+/* Patents Section */
+.patents-section {
+  margin-bottom: 40px;
+}
+
+.patents-list {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.patents-list li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Coming Soon Badge */
+.coming-soon .coming-soon-badge {
+  display: inline-block;
+  background-color: #f09228;
+  color: white;
+  padding: 2px 8px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  border-radius: 12px;
+  margin-top: 5px;
+}
+
+.coming-soon img {
+  opacity: 0.5;
+}
+
+/* Share Button */
+.share-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.share-button:hover {
+  background-color: #3367d6;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .profile-section {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .publication {
+    flex-direction: column;
+  }
+
+  .publication-media {
+    flex: 1 1 100%;
+  }
+
+  .publication-details {
+    flex: 1 1 100%;
+  }
+}
