@@ -33,6 +33,7 @@ def show_intensity_along_video(video_path, positions):
 
         # Accurate frame timing
         frame_time = cap.get(cv2.CAP_PROP_POS_MSEC) / 1000.0
+        # if frame_time > 60: break
         frame_times.append(frame_time)
 
         # Vectorized pixel sampling (faster than loops)
@@ -77,13 +78,14 @@ def show_intensity_along_video(video_path, positions):
     fig.show()
 
     # Save interactive HTML with pixel data embedded
-    fig.write_html('pixel_intensities.html', include_plotlyjs='cdn')
-    print("Saved interactive plot to 'pixel_intensities.html'")
+    output_file = '/home/chen/Downloads/pixel_intensities.html'
+    fig.write_html(output_file, include_plotlyjs='cdn')
+    print(f"Saved interactive plot to {output_file}")
     print(f"Total processing time: {(time.time() - start_time) / 60:.1f} minutes")
 
 
 if __name__ == '__main__':
-    video_path = 'video.mp4'
+    video_path = '/home/chen/Downloads/VID_20260115_232204_h265.mp4'
     positions = [(600, 250),
                  (600, 377),
                  (600, 532),
