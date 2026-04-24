@@ -120,8 +120,7 @@
   #btn-bar {
     position: fixed;
     bottom: 24px;
-    left: 50%;
-    transform: translateX(-50%);
+    right: 28px;
     z-index: 20;
     display: flex;
     gap: 12px;
@@ -133,22 +132,25 @@
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255,255,255,0.55);
     color: #fff;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 700;
-    padding: 10px 22px;
-    border-radius: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
     cursor: pointer;
     transition: background 0.25s, transform 0.2s;
-    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
   }
   .ctrl-btn:hover {
     background: rgba(255,255,255,0.32);
-    transform: scale(1.06);
+    transform: scale(1.1);
   }
   .ctrl-btn.active {
     background: rgba(255,200,80,0.35);
     border-color: #FFD700;
-    color: #FFD700;
   }
 </style>
 </head>
@@ -171,9 +173,8 @@
 </div>
 
 <div id="btn-bar">
-  <button class="ctrl-btn active" id="btn-a" onclick="setPos('a')">⬆ מיקום א׳</button>
-  <button class="ctrl-btn" id="btn-b" onclick="setPos('b')">◀ מיקום ב׳</button>
-  <button class="ctrl-btn" id="unmute-btn" onclick="unmuteVideo()">🔊 הפעל קול</button>
+  <button class="ctrl-btn active" id="pos-btn" onclick="togglePos()" title="החלף מיקום">⬆</button>
+  <button class="ctrl-btn active" id="sound-btn" onclick="toggleSound()" title="קול">🔊</button>
 </div>
 
 <script>
@@ -225,28 +226,41 @@
 
   // Position toggle
   let currentPos = 'a';
-  function setPos(pos) {
+  function togglePos() {
+    currentPos = currentPos === 'a' ? 'b' : 'a';
     const block = document.getElementById('textBlock');
     block.classList.remove('pos-a', 'pos-b');
-    block.classList.add('pos-' + pos);
-    currentPos = pos;
-    document.getElementById('btn-a').classList.toggle('active', pos === 'a');
-    document.getElementById('btn-b').classList.toggle('active', pos === 'b');
+    block.classList.add('pos-' + currentPos);
+    const btn = document.getElementById('pos-btn');
+    btn.textContent = currentPos === 'a' ? '⬆' : '◀';
   }
 
-  // Sound toggle
-  function unmuteVideo() {
+  // Sound — on by default
+  let isMuted = false;
+  function unmuteIframe() {
     const iframe = document.getElementById('yt-iframe');
-    const btn = document.getElementById('unmute-btn');
-    if (btn.dataset.muted !== 'false') {
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
-      btn.textContent = '🔇 השתק';
-      btn.dataset.muted = 'false';
-    } else {
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
+    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
+  }
+
+  // Unmute as soon as iframe is ready
+  document.getElementById('yt-iframe').addEventListener('load', () => {
+    setTimeout(unmuteIframe, 1000);
+  });
+
+  function toggleSound() {
+    const iframe = document.getElementById('yt-iframe');
+    const btn = document.getElementById('sound-btn');
+    if (!isMuted) {
       iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
-      btn.textContent = '🔊 הפעל קול';
-      btn.dataset.muted = 'true';
+      btn.textContent = '🔇';
+      btn.classList.remove('active');
+      isMuted = true;
+    } else {
+      unmuteIframe();
+      btn.textContent = '🔊';
+      btn.classList.add('active');
+      isMuted = false;
     }
   }
 
