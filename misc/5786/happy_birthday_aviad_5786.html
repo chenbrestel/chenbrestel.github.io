@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>יום הולדת שמח אביעד!</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    position: relative;
+  }
+
+  /* YouTube background */
+  #yt-bg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 177.78vh; /* 16/9 * 100vh */
+    height: 100vh;
+    min-width: 100vw;
+    min-height: 56.25vw; /* 9/16 * 100vw */
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  #yt-bg iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  /* Dark overlay so text is readable */
+  #overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.35);
+    z-index: 1;
+  }
+
+  .emoji-particle {
+    position: fixed;
+    top: -60px;
+    pointer-events: none;
+    animation: fall linear infinite;
+    z-index: 2;
+    user-select: none;
+  }
+
+  @keyframes fall {
+    0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+  }
+
+  .center {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+  }
+
+  .wave-line {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    flex-wrap: nowrap;
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+
+  .wave-line span {
+    display: inline-block;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6), 0 0 30px rgba(255,150,50,0.5);
+  }
+
+  .line1 span { font-size: clamp(32px, 7vw, 72px); }
+  .line2 span {
+    font-size: clamp(52px, 12vw, 110px);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(255,120,30,0.7);
+  }
+
+  .icons {
+    font-size: 44px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .icons span { display: inline-block; }
+</style>
+</head>
+<body>
+
+<!-- YouTube background -->
+<div id="yt-bg">
+  <iframe
+    src="https://www.youtube.com/embed/--aSmN5ylPc?autoplay=1&mute=1&loop=1&playlist=--aSmN5ylPc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
+    allow="autoplay; fullscreen"
+    allowfullscreen>
+  </iframe>
+</div>
+
+<div id="overlay"></div>
+
+<div class="center">
+  <div class="wave-line line1" id="line1"></div>
+  <div class="wave-line line2" id="line2"></div>
+  <div class="icons" id="icons"></div>
+</div>
+
+<script>
+  const text1 = '🎂 יום הולדת שמח';
+  const text2 = 'אביעד!';
+  const iconsList = ['🥳','🎉','🎊'];
+
+  function buildWaveLine(containerId, text, colorFn) {
+    const container = document.getElementById(containerId);
+    [...text].forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.textContent = ch === ' ' ? '\u00A0' : ch;
+      if (colorFn) span.style.color = colorFn(i);
+      container.appendChild(span);
+    });
+  }
+
+  buildWaveLine('line1', text1, null);
+  buildWaveLine('line2', text2, i => {
+    const colors = ['#FFD700','#FFA040','#FF6B1A','#FFD700','#FFA040','#FF6B1A','#FFD700'];
+    return colors[i % colors.length];
+  });
+
+  const iconsEl = document.getElementById('icons');
+  iconsList.forEach(ic => {
+    const sp = document.createElement('span');
+    sp.textContent = ic;
+    iconsEl.appendChild(sp);
+  });
+
+  function animateWave(containerId, amp, speed, phaseStep) {
+    const spans = document.getElementById(containerId).querySelectorAll('span');
+    function tick(t) {
+      spans.forEach((sp, i) => {
+        const y = amp * Math.sin((t * speed * 0.002) + i * phaseStep);
+        sp.style.transform = `translateY(${y}px)`;
+      });
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  animateWave('line1', 14, 1.2, 0.55);
+  animateWave('line2', 18, 1.0, 0.75);
+
+  const iconSpans = iconsEl.querySelectorAll('span');
+  (function tickIcons(t) {
+    iconSpans.forEach((sp, i) => {
+      sp.style.transform = `translateY(${10 * Math.sin(t * 0.0018 + i * 1.1)}px)`;
+    });
+    requestAnimationFrame(tickIcons);
+  })();
+
+  // Falling emojis
+  const emojis = ['🎉','🎊','🥳','🎈','🎂','⭐','✨','🌟','💜','💛','🎁','🎀','🍭','🍬','🎶','💫','🪅','🥂','🎯','🪄'];
+  function spawnEmoji() {
+    const el = document.createElement('div');
+    el.className = 'emoji-particle';
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    const dur = 3 + Math.random() * 5;
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.fontSize = (18 + Math.random() * 26) + 'px';
+    el.style.animationDuration = dur + 's';
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), dur * 1000 + 500);
+  }
+  for (let i = 0; i < 50; i++) setTimeout(spawnEmoji, i * 60);
+  setInterval(spawnEmoji, 250);
+</script>
+</body>
+</html>
