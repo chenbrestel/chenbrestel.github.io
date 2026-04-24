@@ -57,16 +57,32 @@
     100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
   }
 
+  /* Text container — absolutely positioned, transitions smoothly */
   .center {
-    position: relative;
+    position: fixed;
     z-index: 10;
     text-align: center;
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    transition: top 0.7s cubic-bezier(.4,0,.2,1),
+                left 0.7s cubic-bezier(.4,0,.2,1),
+                transform 0.7s cubic-bezier(.4,0,.2,1);
+  }
+
+  /* Position A: top 20%, horizontally centered */
+  .center.pos-a {
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Position B: vertically centered, left third */
+  .center.pos-b {
+    top: 50%;
+    left: 16.67%; /* center of left third = 1/6 of width */
+    transform: translate(-50%, -50%);
   }
 
   .wave-line {
@@ -85,14 +101,14 @@
     text-shadow: 0 2px 16px rgba(0,0,0,0.6), 0 0 30px rgba(255,150,50,0.5);
   }
 
-  .line1 span { font-size: clamp(32px, 7vw, 72px); }
+  .line1 span { font-size: clamp(28px, 6vw, 66px); }
   .line2 span {
-    font-size: clamp(52px, 12vw, 110px);
+    font-size: clamp(44px, 10vw, 100px);
     text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 0 40px rgba(255,120,30,0.7);
   }
 
   .icons {
-    font-size: 44px;
+    font-size: 40px;
     margin-top: 10px;
     display: flex;
     justify-content: center;
@@ -100,26 +116,39 @@
   }
   .icons span { display: inline-block; }
 
-  #unmute-btn {
+  /* Bottom buttons bar */
+  #btn-bar {
     position: fixed;
-    bottom: 28px;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 20;
-    background: rgba(255,255,255,0.2);
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .ctrl-btn {
+    background: rgba(255,255,255,0.18);
     backdrop-filter: blur(8px);
-    border: 2px solid rgba(255,255,255,0.6);
+    border: 2px solid rgba(255,255,255,0.55);
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    padding: 12px 28px;
+    padding: 10px 22px;
     border-radius: 50px;
     cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
+    transition: background 0.25s, transform 0.2s;
+    white-space: nowrap;
   }
-  #unmute-btn:hover {
-    background: rgba(255,255,255,0.35);
-    transform: translateX(-50%) scale(1.05);
+  .ctrl-btn:hover {
+    background: rgba(255,255,255,0.32);
+    transform: scale(1.06);
+  }
+  .ctrl-btn.active {
+    background: rgba(255,200,80,0.35);
+    border-color: #FFD700;
+    color: #FFD700;
   }
 </style>
 </head>
@@ -135,13 +164,17 @@
 
 <div id="overlay"></div>
 
-<div class="center">
+<div class="center pos-a" id="textBlock">
   <div class="wave-line line1" id="line1"></div>
   <div class="wave-line line2" id="line2"></div>
   <div class="icons" id="icons"></div>
 </div>
 
-<button id="unmute-btn" onclick="unmuteVideo()">🔊 הפעל קול</button>
+<div id="btn-bar">
+  <button class="ctrl-btn active" id="btn-a" onclick="setPos('a')">⬆ מיקום א׳</button>
+  <button class="ctrl-btn" id="btn-b" onclick="setPos('b')">◀ מיקום ב׳</button>
+  <button class="ctrl-btn" id="unmute-btn" onclick="unmuteVideo()">🔊 הפעל קול</button>
+</div>
 
 <script>
   // Build wave text
@@ -168,6 +201,7 @@
     iconsEl.appendChild(sp);
   });
 
+  // Wave animation
   function animateWave(containerId, amp, speed, phaseStep) {
     const spans = document.getElementById(containerId).querySelectorAll('span');
     (function tick(t) {
@@ -189,31 +223,31 @@
     requestAnimationFrame(tickIcons);
   })();
 
-  // Unmute via YouTube IFrame API
-  function unmuteVideo() {
-    const iframe = document.getElementById('yt-iframe');
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
-      '*'
-    );
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }),
-      '*'
-    );
-    const btn = document.getElementById('unmute-btn');
-    btn.textContent = '🔇 השתק';
-    btn.onclick = muteVideo;
+  // Position toggle
+  let currentPos = 'a';
+  function setPos(pos) {
+    const block = document.getElementById('textBlock');
+    block.classList.remove('pos-a', 'pos-b');
+    block.classList.add('pos-' + pos);
+    currentPos = pos;
+    document.getElementById('btn-a').classList.toggle('active', pos === 'a');
+    document.getElementById('btn-b').classList.toggle('active', pos === 'b');
   }
 
-  function muteVideo() {
+  // Sound toggle
+  function unmuteVideo() {
     const iframe = document.getElementById('yt-iframe');
-    iframe.contentWindow.postMessage(
-      JSON.stringify({ event: 'command', func: 'mute', args: [] }),
-      '*'
-    );
     const btn = document.getElementById('unmute-btn');
-    btn.textContent = '🔊 הפעל קול';
-    btn.onclick = unmuteVideo;
+    if (btn.dataset.muted !== 'false') {
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
+      btn.textContent = '🔇 השתק';
+      btn.dataset.muted = 'false';
+    } else {
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
+      btn.textContent = '🔊 הפעל קול';
+      btn.dataset.muted = 'true';
+    }
   }
 
   // Falling emojis
