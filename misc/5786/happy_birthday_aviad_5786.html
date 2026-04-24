@@ -18,7 +18,6 @@
     position: fixed;
     top: 50%;
     left: 50%;
-    /* Landscape: fill by height. Portrait: fill by width (56.25vw tall = 16:9 ratio) */
     width: 177.78vh;
     height: 100vh;
     min-width: 100vw;
@@ -34,6 +33,25 @@
     width: 100%;
     height: 100%;
     border: none;
+  }
+
+  /*
+   * Portrait mode: rotate the iframe 90° so the landscape video
+   * fills the full portrait screen without any cropping.
+   * The iframe is sized to the screen's landscape dimensions,
+   * then rotated to fit portrait.
+   */
+  @media (orientation: portrait) {
+    #yt-bg {
+      /* swap axes: width=100vh fills the portrait height, height=100vw fills the portrait width */
+      width: 100vh;
+      height: 100vw;
+      min-width: unset;
+      min-height: unset;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(90deg);
+    }
   }
 
   #overlay {
@@ -206,11 +224,11 @@
   }
   #dismiss-hint:hover { background: rgba(255,255,255,0.28); }
 
-  /* Portrait: make text a bit smaller so it fits */
+  /* Portrait: use vmin so text scales with the narrow axis */
   @media (orientation: portrait) {
-    .line1 span { font-size: clamp(22px, 6vw, 66px); }
-    .line2 span { font-size: clamp(32px, 10vw, 100px); }
-    .icons      { font-size: 30px; }
+    .line1 span { font-size: clamp(20px, 5vmin, 66px); }
+    .line2 span { font-size: clamp(30px, 9vmin, 100px); }
+    .icons      { font-size: clamp(24px, 6vmin, 40px); }
   }
 </style>
     <!-- Open Graph Meta Tags for WhatsApp -->
