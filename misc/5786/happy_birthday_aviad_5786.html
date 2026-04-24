@@ -174,7 +174,7 @@
 
 <div id="btn-bar">
   <button class="ctrl-btn active" id="pos-btn" onclick="togglePos()" title="החלף מיקום">⬆</button>
-  <button class="ctrl-btn active" id="sound-btn" onclick="toggleSound()" title="קול">🔊</button>
+  <button class="ctrl-btn" id="sound-btn" onclick="toggleSound()" title="קול">🔊</button>
 </div>
 
 <script>
@@ -235,32 +235,23 @@
     btn.textContent = currentPos === 'a' ? '⬆' : '◀';
   }
 
-  // Sound — on by default
-  let isMuted = false;
-  function unmuteIframe() {
-    const iframe = document.getElementById('yt-iframe');
-    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
-    iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
-  }
-
-  // Unmute as soon as iframe is ready
-  document.getElementById('yt-iframe').addEventListener('load', () => {
-    setTimeout(unmuteIframe, 1000);
-  });
+  // Sound — muted by default
+  let isMuted = true;
 
   function toggleSound() {
     const iframe = document.getElementById('yt-iframe');
     const btn = document.getElementById('sound-btn');
-    if (!isMuted) {
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
+    if (isMuted) {
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'unMute', args: [] }), '*');
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }), '*');
       btn.textContent = '🔇';
       btn.classList.remove('active');
-      isMuted = true;
+      isMuted = false;
     } else {
-      unmuteIframe();
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute', args: [] }), '*');
       btn.textContent = '🔊';
       btn.classList.add('active');
-      isMuted = false;
+      isMuted = true;
     }
   }
 
