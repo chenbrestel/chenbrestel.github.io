@@ -14,15 +14,14 @@
     position: relative;
   }
 
-  /* YouTube background */
   #yt-bg {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 177.78vh; /* 16/9 * 100vh */
+    width: 177.78vh;
     height: 100vh;
     min-width: 100vw;
-    min-height: 56.25vw; /* 9/16 * 100vw */
+    min-height: 56.25vw;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 0;
@@ -36,7 +35,6 @@
     border: none;
   }
 
-  /* Dark overlay so text is readable */
   #overlay {
     position: fixed;
     inset: 0;
@@ -101,13 +99,34 @@
     gap: 8px;
   }
   .icons span { display: inline-block; }
+
+  #unmute-btn {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    border: 2px solid rgba(255,255,255,0.6);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 12px 28px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  #unmute-btn:hover {
+    background: rgba(255,255,255,0.35);
+    transform: translateX(-50%) scale(1.05);
+  }
 </style>
 </head>
 <body>
 
-<!-- YouTube background -->
 <div id="yt-bg">
-  <iframe
+  <iframe id="yt-iframe"
     src="https://www.youtube.com/embed/--aSmN5ylPc?autoplay=1&mute=1&loop=1&playlist=--aSmN5ylPc&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&enablejsapi=1"
     allow="autoplay; fullscreen"
     allowfullscreen>
@@ -122,11 +141,10 @@
   <div class="icons" id="icons"></div>
 </div>
 
-<script>
-  const text1 = '🎂 יום הולדת שמח';
-  const text2 = 'אביעד!';
-  const iconsList = ['🥳','🎉','🎊'];
+<button id="unmute-btn" onclick="unmuteVideo()">🔊 הפעל קול</button>
 
+<script>
+  // Build wave text
   function buildWaveLine(containerId, text, colorFn) {
     const container = document.getElementById(containerId);
     [...text].forEach((ch, i) => {
@@ -137,14 +155,14 @@
     });
   }
 
-  buildWaveLine('line1', text1, null);
-  buildWaveLine('line2', text2, i => {
+  buildWaveLine('line1', '🎂 יום הולדת שמח', null);
+  buildWaveLine('line2', 'אביעד!', i => {
     const colors = ['#FFD700','#FFA040','#FF6B1A','#FFD700','#FFA040','#FF6B1A','#FFD700'];
     return colors[i % colors.length];
   });
 
   const iconsEl = document.getElementById('icons');
-  iconsList.forEach(ic => {
+  ['🥳','🎉','🎊'].forEach(ic => {
     const sp = document.createElement('span');
     sp.textContent = ic;
     iconsEl.appendChild(sp);
@@ -152,14 +170,12 @@
 
   function animateWave(containerId, amp, speed, phaseStep) {
     const spans = document.getElementById(containerId).querySelectorAll('span');
-    function tick(t) {
+    (function tick(t) {
       spans.forEach((sp, i) => {
-        const y = amp * Math.sin((t * speed * 0.002) + i * phaseStep);
-        sp.style.transform = `translateY(${y}px)`;
+        sp.style.transform = `translateY(${amp * Math.sin(t * speed * 0.002 + i * phaseStep)}px)`;
       });
       requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+    })();
   }
 
   animateWave('line1', 14, 1.2, 0.55);
@@ -172,6 +188,33 @@
     });
     requestAnimationFrame(tickIcons);
   })();
+
+  // Unmute via YouTube IFrame API
+  function unmuteVideo() {
+    const iframe = document.getElementById('yt-iframe');
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'unMute', args: [] }),
+      '*'
+    );
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'setVolume', args: [100] }),
+      '*'
+    );
+    const btn = document.getElementById('unmute-btn');
+    btn.textContent = '🔇 השתק';
+    btn.onclick = muteVideo;
+  }
+
+  function muteVideo() {
+    const iframe = document.getElementById('yt-iframe');
+    iframe.contentWindow.postMessage(
+      JSON.stringify({ event: 'command', func: 'mute', args: [] }),
+      '*'
+    );
+    const btn = document.getElementById('unmute-btn');
+    btn.textContent = '🔊 הפעל קול';
+    btn.onclick = unmuteVideo;
+  }
 
   // Falling emojis
   const emojis = ['🎉','🎊','🥳','🎈','🎂','⭐','✨','🌟','💜','💛','🎁','🎀','🍭','🍬','🎶','💫','🪅','🥂','🎯','🪄'];
